@@ -41,23 +41,24 @@ function Dashboard() {
                         </nav>
                     </div>
                     <div className="col-md-6">
-                        <div className="header-slider normal-slider">
+                                <div className="header-slider carousel slide" data-ride="carousel">
+                                    
                             <div className="header-slider-item">
-                                <img src="img/slider-1.jpg" alt="Slider Image" />
+                                        <img src="assets/img/slider-1.jpg" alt="Slider Image" />
                                 <div className="header-slider-caption">
                                     <p>Some text goes here that describes the image</p>
                                     <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
                             <div className="header-slider-item">
-                                <img src="img/slider-2.jpg" alt="Slider Image" />
+                                        <img src="assets/img/slider-2.jpg" alt="Slider Image" />
                                 <div className="header-slider-caption">
                                     <p>Some text goes here that describes the image</p>
                                     <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
                             <div className="header-slider-item">
-                                <img src="img/slider-3.jpg" alt="Slider Image" />
+                                        <img src="assets/img/slider-3.jpg" alt="Slider Image" />
                                 <div className="header-slider-caption">
                                     <p>Some text goes here that describes the image</p>
                                     <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Shop Now</a>
@@ -68,13 +69,13 @@ function Dashboard() {
                     <div className="col-md-3">
                         <div className="header-img">
                             <div className="img-item">
-                                <img src="img/category-1.jpg" />
+                                        <img src="assets/img/category-1.jpg" />
                                 <a className="img-text" href="">
                                     <p>Some text goes here that describes the image</p>
                                 </a>
                             </div>
                             <div className="img-item">
-                                <img src="img/category-2.jpg" />
+                                        <img src="assets/img/category-2.jpg" />
                                 <a className="img-text" href="">
                                     <p>Some text goes here that describes the image</p>
                                 </a>
@@ -90,12 +91,12 @@ function Dashboard() {
         <div className="brand">
             <div className="container-fluid">
                 <div className="brand-slider">
-                    <div className="brand-item"><img src="img/brand-1.png" alt=""/></div>
-                    <div className="brand-item"><img src="img/brand-2.png" alt=""/></div>
-                    <div className="brand-item"><img src="img/brand-3.png" alt=""/></div>
-                    <div className="brand-item"><img src="img/brand-4.png" alt=""/></div>
-                    <div className="brand-item"><img src="img/brand-5.png" alt=""/></div>
-                    <div className="brand-item"><img src="img/brand-6.png" alt=""/></div>
+                            <div className="brand-item"><img src="assets/img/brand-1.png" alt=""/></div>
+                            <div className="brand-item"><img src="assets/img/brand-2.png" alt=""/></div>
+                            <div className="brand-item"><img src="assets/img/brand-3.png" alt=""/></div>
+                            <div className="brand-item"><img src="assets/img/brand-4.png" alt=""/></div>
+                            <div className="brand-item"><img src="assets/img/brand-5.png" alt=""/></div>
+                            <div className="brand-item"><img src="assets/img/brand-6.png" alt=""/></div>
                 </div>
             </div>
         </div>
@@ -152,7 +153,7 @@ function Dashboard() {
                 <div className="row">
                     <div className="col-md-3">
                         <div className="category-item ch-400">
-                            <img src="img/category-3.jpg" />
+                                    <img src="assets/img/category-3.jpg" />
                             <a className="category-name" href="">
                                 <p>Some text goes here that describes the image</p>
                             </a>
@@ -160,13 +161,13 @@ function Dashboard() {
                     </div>
                     <div className="col-md-3">
                         <div className="category-item ch-250">
-                            <img src="img/category-4.jpg" />
+                                    <img src="assets/img/category-4.jpg" />
                             <a className="category-name" href="">
                                 <p>Some text goes here that describes the image</p>
                             </a>
                         </div>
                         <div className="category-item ch-150">
-                            <img src="img/category-5.jpg" />
+                                    <img src="assets/img/category-5.jpg" />
                             <a className="category-name" href="">
                                 <p>Some text goes here that describes the image</p>
                             </a>
@@ -174,13 +175,13 @@ function Dashboard() {
                     </div>
                     <div className="col-md-3">
                         <div className="category-item ch-150">
-                            <img src="img/category-6.jpg" />
+                                    <img src="assets/img/category-6.jpg" />
                             <a className="category-name" href="">
                                 <p>Some text goes here that describes the image</p>
                             </a>
                         </div>
                         <div className="category-item ch-250">
-                            <img src="img/category-7.jpg" />
+                                    <img src="assets/img/category-7.jpg" />
                             <a className="category-name" href="">
                                 <p>Some text goes here that describes the image</p>
                             </a>
@@ -188,7 +189,7 @@ function Dashboard() {
                     </div>
                     <div className="col-md-3">
                         <div className="category-item ch-400">
-                            <img src="img/category-8.jpg" />
+                                    <img src="assets/img/category-8.jpg" />
                             <a className="category-name" href="">
                                 <p>Some text goes here that describes the image</p>
                             </a>
@@ -235,7 +236,7 @@ function Dashboard() {
                             </div>
                             <div className="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-1.jpg" alt="Product Image"/>
+                                            <img src="assets/img/product-1.jpg" alt="Product Image"/>
                                 </a>
                                 <div className="product-action">
                                     <a href="#"><i className="fa fa-cart-plus"></i></a>
@@ -263,7 +264,7 @@ function Dashboard() {
                             </div>
                             <div className="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-2.jpg" alt="Product Image"/>
+                                            <img src="assets/img/product-2.jpg" alt="Product Image"/>
                                 </a>
                                 <div className="product-action">
                                     <a href="#"><i className="fa fa-cart-plus"></i></a>
@@ -291,7 +292,7 @@ function Dashboard() {
                             </div>
                             <div className="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-3.jpg" alt="Product Image"/>
+                                            <img src="assets/img/product-3.jpg" alt="Product Image"/>
                                 </a>
                                 <div className="product-action">
                                     <a href="#"><i className="fa fa-cart-plus"></i></a>
@@ -319,7 +320,7 @@ function Dashboard() {
                             </div>
                             <div className="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-4.jpg" alt="Product Image"/>
+                                            <img src="assets/img/product-4.jpg" alt="Product Image"/>
                                 </a>
                                 <div className="product-action">
                                     <a href="#"><i className="fa fa-cart-plus"></i></a>
@@ -347,7 +348,7 @@ function Dashboard() {
                             </div>
                             <div className="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-5.jpg" alt="Product Image"/>
+                                            <img src="assets/img/product-5.jpg" alt="Product Image"/>
                                 </a>
                                 <div className="product-action">
                                     <a href="#"><i className="fa fa-cart-plus"></i></a>
@@ -405,7 +406,7 @@ function Dashboard() {
                             </div>
                             <div className="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-6.jpg" alt="Product Image"/>
+                                            <img src="assets/img/product-6.jpg" alt="Product Image"/>
                                 </a>
                                 <div className="product-action">
                                     <a href="#"><i className="fa fa-cart-plus"></i></a>
@@ -433,7 +434,7 @@ function Dashboard() {
                             </div>
                             <div className="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-7.jpg" alt="Product Image"/>
+                                            <img src="assets/img/product-7.jpg" alt="Product Image"/>
                                 </a>
                                 <div className="product-action">
                                     <a href="#"><i className="fa fa-cart-plus"></i></a>
@@ -461,7 +462,7 @@ function Dashboard() {
                             </div>
                             <div className="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-8.jpg" alt="Product Image"/>
+                                            <img src="assets/img/product-8.jpg" alt="Product Image"/>
                                 </a>
                                 <div className="product-action">
                                     <a href="#"><i className="fa fa-cart-plus"></i></a>
@@ -489,7 +490,7 @@ function Dashboard() {
                             </div>
                             <div className="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-9.jpg" alt="Product Image"/>
+                                            <img src="assets/img/product-9.jpg" alt="Product Image"/>
                                 </a>
                                 <div className="product-action">
                                     <a href="#"><i className="fa fa-cart-plus"></i></a>
@@ -517,7 +518,7 @@ function Dashboard() {
                             </div>
                             <div className="product-image">
                                 <a href="product-detail.html">
-                                    <img src="img/product-10.jpg" alt="Product Image"/>
+                                            <img src="assets/img/product-10.jpg" alt="Product Image"/>
                                 </a>
                                 <div className="product-action">
                                     <a href="#"><i className="fa fa-cart-plus"></i></a>
@@ -543,7 +544,7 @@ function Dashboard() {
                     <div className="col-md-6">
                         <div className="review-slider-item">
                             <div className="review-img">
-                                <img src="img/review-1.jpg" alt="Image"/>
+                                        <img src="assets/img/review-1.jpg" alt="Image"/>
                             </div>
                             <div className="review-text">
                                 <h2>Customer Name</h2>
@@ -564,7 +565,7 @@ function Dashboard() {
                     <div className="col-md-6">
                         <div className="review-slider-item">
                             <div className="review-img">
-                                <img src="img/review-2.jpg" alt="Image"/>
+                                        <img src="assets/img/review-2.jpg" alt="Image"/>
                             </div>
                             <div className="review-text">
                                 <h2>Customer Name</h2>
@@ -585,7 +586,7 @@ function Dashboard() {
                     <div className="col-md-6">
                         <div className="review-slider-item">
                             <div className="review-img">
-                                <img src="img/review-3.jpg" alt="Image"/>
+                                        <img src="assets/img/review-3.jpg" alt="Image"/>
                             </div>
                             <div className="review-text">
                                 <h2>Customer Name</h2>

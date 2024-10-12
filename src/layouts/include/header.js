@@ -70,7 +70,7 @@ function Header() {
                     <div className="col-md-3">
                         <div className="logo">
                             <a href="index.html">
-                                <img src="img/logo.png" alt="Logo"/>
+                                   <img src="assets/img/logo.png" alt="Logo"/>
                             </a>
                         </div>
                     </div>
