@@ -59,15 +59,15 @@ function Footer() {
                     <div className="col-md-6">
                         <div className="payment-method">
                             <h2>We Accept:</h2>
-                            <img src="img/payment-method.png" alt="Payment Method" />
+                            <img src="assets/img/payment-method.png" alt="Payment Method" />
                         </div>
                     </div>
                     <div className="col-md-6">
                         <div className="payment-security">
                             <h2>Secured By:</h2>
-                            <img src="img/godaddy.svg" alt="Payment Security" />
-                            <img src="img/norton.svg" alt="Payment Security" />
-                            <img src="img/ssl.svg" alt="Payment Security" />
+                            <img src="assets/img/godaddy.svg" alt="Payment Security" />
+                            <img src="assets/img/norton.svg" alt="Payment Security" />
+                            <img src="assets/img/ssl.svg" alt="Payment Security" />
                         </div>
                     </div>
                 </div>
@@ -80,11 +80,11 @@ function Footer() {
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 copyright">
-                        <p>Copyright &copy; <a href="#">Your Site Name</a>. All Rights Reserved</p>
+                        <p>Copyright &copy; <a href="#">E-SHOPPER</a>. All Rights Reserved</p>
                     </div>
 
                     <div className="col-md-6 template-by">			
-                        <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                        <p>Designed By <a href="https://htmlcodex.com">JHR</a></p>
                     </div>
                 </div>
             </div>

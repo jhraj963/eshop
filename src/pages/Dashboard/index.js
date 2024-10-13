@@ -6,7 +6,8 @@ function Dashboard() {
         <AdminLayout>
           <>
 
-               {/* Main Slider Start */}
+
+                        {/* Main Slider Start */}
         <div className="header">
             <div className="container-fluid">
                 <div className="row">
@@ -50,20 +51,20 @@ function Dashboard() {
                                     <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
-                            <div className="header-slider-item">
-                                        <img src="assets/img/slider-2.jpg" alt="Slider Image" />
-                                <div className="header-slider-caption">
-                                    <p>Some text goes here that describes the image</p>
-                                    <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Shop Now</a>
-                                </div>
-                            </div>
-                            <div className="header-slider-item">
+                            {/* <div className="header-slider-item">
                                         <img src="assets/img/slider-3.jpg" alt="Slider Image" />
                                 <div className="header-slider-caption">
                                     <p>Some text goes here that describes the image</p>
                                     <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Shop Now</a>
                                 </div>
                             </div>
+                            <div className="header-slider-item">
+                                        <img src="assets/img/slider-1.jpg" alt="Slider Image" />
+                                <div className="header-slider-caption">
+                                    <p>Some text goes here that describes the image</p>
+                                    <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Shop Now</a>
+                                </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="col-md-3">
@@ -88,7 +89,7 @@ function Dashboard() {
         {/* Main Slider End */}      
         
         {/* Brand Start */}
-        <div className="brand">
+        {/* <div className="brand">
             <div className="container-fluid">
                 <div className="brand-slider">
                             <div className="brand-item"><img src="assets/img/brand-1.png" alt=""/></div>
@@ -99,7 +100,7 @@ function Dashboard() {
                             <div className="brand-item"><img src="assets/img/brand-6.png" alt=""/></div>
                 </div>
             </div>
-        </div>
+        </div> */}
         {/* Brand End */}      
         
         {/* Feature Start*/}
@@ -607,7 +608,10 @@ function Dashboard() {
                 </div>
             </div>
         </div>
-       
+           
+        
+    
+               
           
           
           </>  
