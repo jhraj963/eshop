@@ -221,7 +221,7 @@ h2 {
 
 @media (max-width: 575.98px) {
     .top-bar {
-        border-bottom: 1px solid rgba(255, 255, 255, .1);
+        border-bottom: 1px solid rgba(251, 249, 249, 0.1);
     }
 
     .top-bar .col-sm-6:first-child,
