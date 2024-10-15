@@ -1389,7 +1389,7 @@ h2 {
 
 .sidebar-widget.brands ul li span {
     display: inline-block;
-    float: right;
+    /* float: right; */
     color: #666666;
     font-size: 14px;
     font-weight: 400;
@@ -1412,8 +1412,8 @@ h2 {
 
 .sidebar-widget.image img:hover {
     transform: scale(1.1);
-    filter: blur(3px);
-    -webkit-filter: blur(3px);
+    /* filter: blur(3px); */
+    /* -webkit-filter: blur(3px); */
 }
 
 .sidebar-widget.tag a {
