@@ -59,6 +59,11 @@ function Header() {
                                 <span className="menu-title">Products</span>
                             </Link>
                             </li>
+                               <li onClick={activeMenu} className={`nav-item ${isLinkActive("/AllProducts") ? 'active' : ''}`}>
+                                   <Link to="/AllProducts" className="sidebar-link nav-link">
+                                <span className="menu-title">All Products</span>
+                            </Link>
+                            </li>
                             <li onClick={activeMenu} className={`nav-item ${isLinkActive("/ProductDetails") ? 'active' : ''}`}>
                             <Link to="/ProductDetails" className="sidebar-link nav-link">
                                 <span className="menu-title">Product Details</span>
