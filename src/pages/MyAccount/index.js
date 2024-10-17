@@ -46,7 +46,7 @@ function MyAccount() {
                                                 <td>1</td>
                                                 <td>Product Name</td>
                                                 <td>01 Jan 2020</td>
-                                                <td>$99</td>
+                                                <td>৳99</td>
                                                 <td>Approved</td>
                                                 <td><button className="btn">View</button></td>
                                             </tr>
@@ -54,7 +54,7 @@ function MyAccount() {
                                                 <td>2</td>
                                                 <td>Product Name</td>
                                                 <td>01 Jan 2020</td>
-                                                <td>$99</td>
+                                                <td>৳99</td>
                                                 <td>Approved</td>
                                                 <td><button className="btn">View</button></td>
                                             </tr>
@@ -62,7 +62,7 @@ function MyAccount() {
                                                 <td>3</td>
                                                 <td>Product Name</td>
                                                 <td>01 Jan 2020</td>
-                                                <td>$99</td>
+                                                <td>৳99</td>
                                                 <td>Approved</td>
                                                 <td><button className="btn">View</button></td>
                                             </tr>

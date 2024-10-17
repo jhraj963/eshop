@@ -31,7 +31,7 @@ function Cart() {
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td>
                                                 <div className="qty">
                                                     <button className="btn-minus"><i className="fa fa-minus"></i></button>
@@ -39,7 +39,7 @@ function Cart() {
                                                     <button className="btn-plus"><i className="fa fa-plus"></i></button>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td><button><i className="fa fa-trash"></i></button></td>
                                         </tr>
                                         <tr>
@@ -49,7 +49,7 @@ function Cart() {
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td>
                                                 <div className="qty">
                                                     <button className="btn-minus"><i className="fa fa-minus"></i></button>
@@ -57,7 +57,7 @@ function Cart() {
                                                     <button className="btn-plus"><i className="fa fa-plus"></i></button>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td><button><i className="fa fa-trash"></i></button></td>
                                         </tr>
                                         <tr>
@@ -67,7 +67,7 @@ function Cart() {
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td>
                                                 <div className="qty">
                                                     <button className="btn-minus"><i className="fa fa-minus"></i></button>
@@ -75,7 +75,7 @@ function Cart() {
                                                     <button className="btn-plus"><i className="fa fa-plus"></i></button>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td><button><i className="fa fa-trash"></i></button></td>
                                         </tr>
                                         <tr>
@@ -85,7 +85,7 @@ function Cart() {
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td>
                                                 <div className="qty">
                                                     <button className="btn-minus"><i className="fa fa-minus"></i></button>
@@ -93,7 +93,7 @@ function Cart() {
                                                     <button className="btn-plus"><i className="fa fa-plus"></i></button>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td><button><i className="fa fa-trash"></i></button></td>
                                         </tr>
                                         <tr>
@@ -103,7 +103,7 @@ function Cart() {
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td>
                                                 <div className="qty">
                                                     <button className="btn-minus"><i className="fa fa-minus"></i></button>
@@ -111,7 +111,7 @@ function Cart() {
                                                     <button className="btn-plus"><i className="fa fa-plus"></i></button>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td><button><i className="fa fa-trash"></i></button></td>
                                         </tr>
                                     </tbody>
@@ -132,9 +132,9 @@ function Cart() {
                                     <div className="cart-summary">
                                         <div className="cart-content">
                                             <h1>Cart Summary</h1>
-                                            <p>Sub Total<span>$99</span></p>
-                                            <p>Shipping Cost<span>$1</span></p>
-                                            <h2>Grand Total<span>$100</span></h2>
+                                            <p>Sub Total<span>৳99</span></p>
+                                            <p>Shipping Cost<span>৳1</span></p>
+                                            <h2>Grand Total<span>৳100</span></h2>
                                         </div>
                                         <div className="cart-btn">
                                             <button>Update Cart</button>

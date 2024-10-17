@@ -43,7 +43,7 @@ function ProductDetails() {
                                         </div>
                                         <div className="price">
                                             <h4>Price:</h4>
-                                            <p>$99 <span>$149</span></p>
+                                            <p>৳99 <span>৳149</span></p>
                                         </div>
                                         <div className="quantity">
                                             <h4>Quantity:</h4>
@@ -182,7 +182,7 @@ function ProductDetails() {
                                             </div>
                                         </div>
                                         <div className="product-price">
-                                            <h3><span>$</span>99</h3>
+                                            <h3><span>৳</span>99</h3>
                                             <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                         </div>
                                     </div>
@@ -210,7 +210,7 @@ function ProductDetails() {
                                             </div>
                                         </div>
                                         <div className="product-price">
-                                            <h3><span>$</span>99</h3>
+                                            <h3><span>৳</span>99</h3>
                                             <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                         </div>
                                     </div>
@@ -238,7 +238,7 @@ function ProductDetails() {
                                             </div>
                                         </div>
                                         <div className="product-price">
-                                            <h3><span>$</span>99</h3>
+                                            <h3><span>৳</span>99</h3>
                                             <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                         </div>
                                     </div>
@@ -266,7 +266,7 @@ function ProductDetails() {
                                             </div>
                                         </div>
                                         <div className="product-price">
-                                            <h3><span>$</span>99</h3>
+                                            <h3><span>৳</span>99</h3>
                                             <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                         </div>
                                     </div>
@@ -294,7 +294,7 @@ function ProductDetails() {
                                             </div>
                                         </div>
                                         <div className="product-price">
-                                            <h3><span>$</span>99</h3>
+                                            <h3><span>৳</span>99</h3>
                                             <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                         </div>
                                     </div>
@@ -352,7 +352,7 @@ function ProductDetails() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -378,7 +378,7 @@ function ProductDetails() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -404,7 +404,7 @@ function ProductDetails() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>

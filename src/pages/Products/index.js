@@ -37,16 +37,16 @@ function Products() {
                                                 <div className="dropdown">
                                                     <div className="dropdown-toggle" data-toggle="dropdown">Product price range</div>
                                                     <div className="dropdown-menu dropdown-menu-right">
-                                                        <a href="#" className="dropdown-item">$0 to $50</a>
-                                                        <a href="#" className="dropdown-item">$51 to $100</a>
-                                                        <a href="#" className="dropdown-item">$101 to $150</a>
-                                                        <a href="#" className="dropdown-item">$151 to $200</a>
-                                                        <a href="#" className="dropdown-item">$201 to $250</a>
-                                                        <a href="#" className="dropdown-item">$251 to $300</a>
-                                                        <a href="#" className="dropdown-item">$301 to $350</a>
-                                                        <a href="#" className="dropdown-item">$351 to $400</a>
-                                                        <a href="#" className="dropdown-item">$401 to $450</a>
-                                                        <a href="#" className="dropdown-item">$451 to $500</a>
+                                                        <a href="#" className="dropdown-item">৳0 to ৳50</a>
+                                                        <a href="#" className="dropdown-item">৳51 to ৳100</a>
+                                                        <a href="#" className="dropdown-item">৳101 to ৳150</a>
+                                                        <a href="#" className="dropdown-item">৳151 to ৳200</a>
+                                                        <a href="#" className="dropdown-item">৳201 to ৳250</a>
+                                                        <a href="#" className="dropdown-item">৳251 to ৳300</a>
+                                                        <a href="#" className="dropdown-item">৳301 to ৳350</a>
+                                                        <a href="#" className="dropdown-item">৳351 to ৳400</a>
+                                                        <a href="#" className="dropdown-item">৳401 to ৳450</a>
+                                                        <a href="#" className="dropdown-item">৳451 to ৳500</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,7 +78,7 @@ function Products() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@ function Products() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@ function Products() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -162,7 +162,7 @@ function Products() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@ function Products() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -218,7 +218,7 @@ function Products() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -246,7 +246,7 @@ function Products() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -274,7 +274,7 @@ function Products() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -302,7 +302,7 @@ function Products() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -377,7 +377,7 @@ function Products() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -403,7 +403,7 @@ function Products() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>
@@ -429,7 +429,7 @@ function Products() {
                                         </div>
                                     </div>
                                     <div className="product-price">
-                                        <h3><span>$</span>99</h3>
+                                        <h3><span>৳</span>99</h3>
                                         <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
                                 </div>

@@ -123,10 +123,10 @@ function Checkout() {
                         <div class="checkout-inner">
                             <div class="checkout-summary">
                                 <h1>Cart Total</h1>
-                                <p>Product Name<span>$99</span></p>
-                                <p class="sub-total">Sub Total<span>$99</span></p>
-                                <p class="ship-cost">Shipping Cost<span>$1</span></p>
-                                <h2>Grand Total<span>$100</span></h2>
+                                <p>Product Name<span>৳99</span></p>
+                                <p class="sub-total">Sub Total<span>৳99</span></p>
+                                <p class="ship-cost">Shipping Cost<span>৳1</span></p>
+                                <h2>Grand Total<span>৳100</span></h2>
                             </div>
 
                             <div class="checkout-payment">

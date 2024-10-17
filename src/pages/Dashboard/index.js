@@ -246,7 +246,7 @@ function Dashboard() {
                                 </div>
                             </div>
                             <div className="product-price">
-                                <h3><span>$</span>99</h3>
+                                <h3><span>৳</span>99</h3>
                                 <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
@@ -274,7 +274,7 @@ function Dashboard() {
                                 </div>
                             </div>
                             <div className="product-price">
-                                <h3><span>$</span>99</h3>
+                                <h3><span>৳</span>99</h3>
                                 <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
@@ -302,7 +302,7 @@ function Dashboard() {
                                 </div>
                             </div>
                             <div className="product-price">
-                                <h3><span>$</span>99</h3>
+                                <h3><span>৳</span>99</h3>
                                 <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
@@ -330,7 +330,7 @@ function Dashboard() {
                                 </div>
                             </div>
                             <div className="product-price">
-                                <h3><span>$</span>99</h3>
+                                <h3><span>৳</span>99</h3>
                                 <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
@@ -358,7 +358,7 @@ function Dashboard() {
                                 </div>
                             </div>
                             <div className="product-price">
-                                <h3><span>$</span>99</h3>
+                                <h3><span>৳</span>99</h3>
                                 <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
@@ -416,7 +416,7 @@ function Dashboard() {
                                 </div>
                             </div>
                             <div className="product-price">
-                                <h3><span>$</span>99</h3>
+                                <h3><span>৳</span>99</h3>
                                 <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
@@ -444,7 +444,7 @@ function Dashboard() {
                                 </div>
                             </div>
                             <div className="product-price">
-                                <h3><span>$</span>99</h3>
+                                <h3><span>৳</span>99</h3>
                                 <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
@@ -472,7 +472,7 @@ function Dashboard() {
                                 </div>
                             </div>
                             <div className="product-price">
-                                <h3><span>$</span>99</h3>
+                                <h3><span>৳</span>99</h3>
                                 <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
@@ -500,7 +500,7 @@ function Dashboard() {
                                 </div>
                             </div>
                             <div className="product-price">
-                                <h3><span>$</span>99</h3>
+                                <h3><span>৳</span>99</h3>
                                 <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
@@ -528,7 +528,7 @@ function Dashboard() {
                                 </div>
                             </div>
                             <div className="product-price">
-                                <h3><span>$</span>99</h3>
+                                <h3><span>৳</span>99</h3>
                                 <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>

@@ -31,7 +31,7 @@ function Wishlist() {
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td>
                                                 <div className="qty">
                                                     <button className="btn-minus"><i className="fa fa-minus"></i></button>
@@ -49,7 +49,7 @@ function Wishlist() {
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td>
                                                 <div className="qty">
                                                     <button className="btn-minus"><i className="fa fa-minus"></i></button>
@@ -67,7 +67,7 @@ function Wishlist() {
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td>
                                                 <div className="qty">
                                                     <button className="btn-minus"><i className="fa fa-minus"></i></button>
@@ -85,7 +85,7 @@ function Wishlist() {
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td>
                                                 <div className="qty">
                                                     <button className="btn-minus"><i className="fa fa-minus"></i></button>
@@ -103,7 +103,7 @@ function Wishlist() {
                                                     <p>Product Name</p>
                                                 </div>
                                             </td>
-                                            <td>$99</td>
+                                            <td>৳99</td>
                                             <td>
                                                 <div className="qty">
                                                     <button className="btn-minus"><i className="fa fa-minus"></i></button>
