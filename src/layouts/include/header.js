@@ -39,7 +39,7 @@ function Header() {
         </div>
  
         
-  
+        <div className='sticky-top'>
         <div className="nav">
             <div className="container-fluid">
                 <nav className="navbar navbar-expand-md bg-dark navbar-dark">
@@ -131,6 +131,7 @@ function Header() {
             </div>
         </div>
         
+        </div>
         
 
         <div className="bottom-bar">
