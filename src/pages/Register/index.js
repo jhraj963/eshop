@@ -1,63 +1,69 @@
-import React from 'react'
-import AdminLayout from '../../layouts/AdminLayout'
+import React, { useState } from 'react';
+import AuthLayout from '../../layouts/AuthLayout';
+import { Link, useNavigate } from 'react-router-dom';
+import { register } from '../../Api/AllApi';
 
 function Register() {
-    return (
-        <AdminLayout>
-          <>
+    const [inputs, setInputs] = useState([]);
+    const navigate = useNavigate();
 
-           <div className="login">
-            <div className="container-fluid">
+    // let signup = async(inputs) => {
+    //     await register(inputs);
+    //     navigate('/signin');
+    // }
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({ ...values, [name]: value }));
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await register(inputs);
+        navigate('/login')
+    }
+    return (
+        <AuthLayout>
+            <div className="text-center mb-5">
+                <img src="./assets/img/logo.png" height="48" className='mb-4' />
+                <h3>Sign Up</h3>
+                <p>Please fill the form to register.</p>
+            </div>
+            <form onSubmit={handleSubmit}>
                 <div className="row">
-                    <div className="col-lg-12">
-                        <h1>Register</h1>    
-                        <div className="register-form">
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <label>First Name</label>
-                                    <input className="form-control" type="text" placeholder="First Name"/>
-                                </div>
-                                <div className="col-md-6">
-                                    <label>Last Name"</label>
-                                    <input className="form-control" type="text" placeholder="Last Name"/>
-                                </div>
-                                <div className="col-md-6">
-                                    <label>E-mail</label>
-                                    <input className="form-control" type="text" placeholder="E-mail"/>
-                                </div>
-                                <div className="col-md-6">
-                                    <label>Mobile No</label>
-                                    <input className="form-control" type="text" placeholder="Mobile No"/>
-                                </div>
-                                <div className="col-md-6">
-                                    <label>Password</label>
-                                    <input className="form-control" type="text" placeholder="Password"/>
-                                </div>
-                                <div className="col-md-6">
-                                    <label>Retype Password</label>
-                                    <input className="form-control" type="text" placeholder="Password"/>
-                                </div>
-                                <div className="col-md-12">
-                                    <button className="btn">Submit</button>
-                                </div>
-                            </div>
+                    <div className="col-12">
+                        <div className="form-group">
+                            <label htmlFor="name">Name</label>
+                            <input type="text" id="name" className="form-control" name="name" onChange={handleChange} />
                         </div>
                     </div>
+                    <div className="col-12">
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" id="email" className="form-control" name="email" onChange={handleChange} />
+                        </div>
+                    </div>
+                    <div className="col-12">
+                        <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <input type="text" id="password" className="form-control" name="password" onChange={handleChange} />
+                        </div>
+                    </div>
+                    <div className="col-12">
+                        <div className="form-group">
+                            <label htmlFor="c_password">Confirm Password</label>
+                            <input type="text" id="c_password" className="form-control" name="c_password" onChange={handleChange} />
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-           </div>
-       
-          
-          
-          </>  
-        
-
-            
-
-            
-
-            
-        </AdminLayout>
+                <Link to="/login">Have an account? Login</Link>
+                <div className="clearfix">
+                    <button className="btn btn-primary float-right">Submit</button>
+                </div>
+            </form>
+        </AuthLayout>
     )
 }
 

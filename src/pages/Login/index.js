@@ -1,54 +1,68 @@
-import React from 'react'
-import AdminLayout from '../../layouts/AdminLayout'
-
+import React, { useState, useEffect } from 'react';
+import AuthLayout from '../../layouts/AuthLayout';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
+import { login } from '../../Api/AllApi';
 function Login() {
-    return (
-        <AdminLayout>
-          <>
+	const navigate = useNavigate();
+	const [inputs, setInputs] = useState([]);
+	const handleChange = (event) => {
+		const name = event.target.name;
+		const value = event.target.value;
+		setInputs(values => ({ ...values, [name]: value }))
+	}
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		let check = await login(inputs);
+		if (check) {
+			window.location =process.env.REACT_APP_BASE_URL
+		} else {
+			alert("Sorry password or email address is wrong!");
+		}
+	}
+	
+	return (
+		<AuthLayout>
+			<div className="text-center mb-5">
+				<img src="./assets/img/logo.png" height="48" className='mb-4' />
+				<h3>Sign In</h3>
+				<p>Please sign in to continue</p>
+			</div>
+			<form onSubmit={handleSubmit}>
+				<div className="form-group position-relative has-icon-left">
+					<label htmlFor="email">Email</label>
+					<div className="position-relative">
+						<input type="email" name='email' className="form-control" id="email" onChange={handleChange} />
+						<div className="form-control-icon">
+							<i data-feather="user"></i>
+						</div>
+					</div>
+				</div>
+				<div className="form-group position-relative has-icon-left">
+					<div className="clearfix">
+						<label htmlFor="password">Password</label>
+						<a href="auth-forgot-password.html" className='float-right'>
+							<small>Forgot password?</small>
+						</a>
+					</div>
+					<div className="position-relative">
+						<input type="password" name='password' className="form-control" id="password" onChange={handleChange} />
+						<div className="form-control-icon">
+							<i data-feather="lock"></i>
+						</div>
+					</div>
+				</div>
 
-           <div className="login">
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <h1>Login</h1>
-                        <div className="login-form">
-                            <div className="row">
-                                <div className="col-md-8">
-                                    <label>E-mail</label>
-                                    <input className="form-control" type="text" placeholder="E-mail"/>
-                                </div>
-                                <div className="col-md-8">
-                                    <label>Password</label>
-                                    <input className="form-control" type="text" placeholder="Password"/>
-                                </div>
-                                <div className="col-md-12">
-                                    <div className="custom-control custom-checkbox">
-                                        <input type="checkbox" className="custom-control-input" id="newaccount"/>
-                                        <label className="custom-control-label" for="newaccount">Keep me signed in</label>
-                                    </div>
-                                </div>
-                                <div className="col-md-12">
-                                    <button className="btn">Submit</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-           </div>
-       
-          
-          
-          </>  
-        
-
-            
-
-            
-
-            
-        </AdminLayout>
-    )
+				<div className='form-check clearfix my-4'>
+					<div className="float-right">
+						<Link to="/register">Don't have an account?</Link>
+					</div>
+				</div>
+				<div className="clearfix">
+					<button className="btn btn-primary float-right">Submit</button>
+				</div>
+			</form>
+		</AuthLayout>
+	)
 }
 
 export default Login
