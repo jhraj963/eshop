@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../components/axios';
 import AdminLayout from '../../layouts/AdminLayout';
 import { Link } from 'react-router-dom';
+import { useCart } from "react-use-cart";
 
 function AllProducts() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { addItem } = useCart();
 
     useEffect(() => {
         getDatas();
@@ -57,9 +59,9 @@ function AllProducts() {
                                                         ))}
                                                     </a>
                                                     <div className="product-action">
-                                                        <a href="#"><i className="fa fa-cart-plus"></i></a>
-                                                        <a href="#"><i className="fa fa-heart"></i></a>
-                                                        <a href="#"><i className="fa fa-search"></i></a>
+                                                        <button type='button' className="btn btn-link" onClick={() => { addItem(d) }}><i className="fa fa-cart-plus"></i></button>
+                                                        <button type='button' className="btn btn-link"><i className="fa fa-heart"></i></button>
+                                                        <button type='button' className="btn btn-link"><i className="fa fa-search"></i></button>
                                                         {/* <button onClick={() => deleteData(d.id)}><i className="fa fa-trash"></i></button> */}
                                                     </div>
                                                 </div>
