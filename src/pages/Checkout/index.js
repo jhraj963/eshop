@@ -1,221 +1,215 @@
-import React, { useState } from 'react'
-import AdminLayout from '../../layouts/AdminLayout'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import AdminLayout from '../../layouts/AdminLayout';
 import { useCart } from 'react-use-cart';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function Checkout() {
     const { items, cartTotal } = useCart();
+    const [inputs, setInputs] = useState({
+    order_id: '',
+    customer_name: '',
+    email: '',
+    mobile_no: '',
+    address: '',
+    country: '',
+    city: '',
+    state: '',
+    zip_code: '',
+    shipping_method: '',
+    payment_method: 'Cash on Delivery',
+    order_date: new Date().toISOString().split('T')[0] // Set today's date by default
+});
+    const { id } = useParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (id) {
+            getDatas();
+        }
+    }, []);
+
+    function getDatas() {
+        axios.get(`${process.env.REACT_APP_API_URL}/allorder/${id}`).then((response) => {
+            setInputs(response.data.data);
+        });
+    }
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({ ...values, [name]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(inputs);
+
+        try {
+            let apiurl = inputs.id ? `/allorder/edit/${inputs.id}` : `/allorder/create`;
+
+            let response = await axios.post(`${process.env.REACT_APP_API_URL}${apiurl}`, {
+                ...inputs,
+                payment_method: inputs.payment_method || 'Cash on Delivery',
+                items,
+                total_amount: cartTotal + 50 // Add shipping cost
+            });
+            navigate('/');
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
     return (
         <AdminLayout>
-            <>
+            <div className="checkout">
+                <div className="container-fluid">
+                    <form className="form form-vertical" onSubmit={handleSubmit}>
+                        <div className="row">
+                            <div className="col-lg-7">
+                                {/* Billing Address */}
+                                <div className="billing-address">
+                                    <h2>Billing Address</h2>
 
-                {/* Checkout Start */}
-                <div class="checkout">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-7">
-                                <div class="checkout-inner">
-                                    <div class="billing-address">
-                                        <h2>Billing Address</h2>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>First Name</label>
-                                                <input class="form-control" type="text" placeholder="First Name" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Last Name"</label>
-                                                <input class="form-control" type="text" placeholder="Last Name" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>E-mail</label>
-                                                <input class="form-control" type="text" placeholder="E-mail" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Mobile No</label>
-                                                <input class="form-control" type="text" placeholder="Mobile No" />
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Address</label>
-                                                <input class="form-control" type="text" placeholder="Address" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Country</label>
-                                                <select class="custom-select">
-                                                    <option selected>United States</option>
-                                                    <option>Afghanistan</option>
-                                                    <option>Albania</option>
-                                                    <option>Algeria</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>City</label>
-                                                <input class="form-control" type="text" placeholder="City" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>State</label>
-                                                <input class="form-control" type="text" placeholder="State" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>ZIP Code</label>
-                                                <input class="form-control" type="text" placeholder="ZIP Code" />
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="newaccount" />
-                                                    <label class="custom-control-label" for="newaccount">Create an account</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="shipto" />
-                                                    <label class="custom-control-label" for="shipto">Ship to different address</label>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    {/* Customer Information */}
+                                    <div className="form-group">
+                                        <label>Full Name</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            name="customer_name"
+                                            placeholder="Enter your full name"
+                                            value={inputs.customer_name}
+                                            onChange={handleChange}
+                                            required
+                                        />
                                     </div>
 
-                                    <div class="shipping-address">
-                                        <h2>Shipping Address</h2>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>First Name</label>
-                                                <input class="form-control" type="text" placeholder="First Name" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Last Name"</label>
-                                                <input class="form-control" type="text" placeholder="Last Name" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>E-mail</label>
-                                                <input class="form-control" type="text" placeholder="E-mail" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Mobile No</label>
-                                                <input class="form-control" type="text" placeholder="Mobile No" />
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Address</label>
-                                                <input class="form-control" type="text" placeholder="Address" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Country</label>
-                                                <select class="custom-select">
-                                                    <option selected>United States</option>
-                                                    <option>Afghanistan</option>
-                                                    <option>Albania</option>
-                                                    <option>Algeria</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>City</label>
-                                                <input class="form-control" type="text" placeholder="City" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>State</label>
-                                                <input class="form-control" type="text" placeholder="State" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>ZIP Code</label>
-                                                <input class="form-control" type="text" placeholder="ZIP Code" />
-                                            </div>
-                                        </div>
+                                    <div className="form-group">
+                                        <label>Email</label>
+                                        <input
+                                            type="email"
+                                            className="form-control"
+                                            name="email"
+                                            placeholder="Enter your email"
+                                            value={inputs.email}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>Mobile Number</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            name="mobile_no"
+                                            placeholder="Enter your mobile number"
+                                            value={inputs.mobile_no}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>Address</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            name="address"
+                                            placeholder="Enter your address"
+                                            value={inputs.address}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>Country</label>
+                                        <select
+                                            className="custom-select"
+                                            name="country"
+                                            value={inputs.country}
+                                            onChange={handleChange}
+                                            required
+                                        >
+                                            <option value="">Select Country</option>
+                                            <option value="United States">Bangladesh</option>
+                                            {/* <option value="Afghanistan">Afghanistan</option>
+                                            <option value="Albania">Albania</option> */}
+                                            {/* Add more countries */}
+                                        </select>
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>City</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            name="city"
+                                            placeholder="Enter your city"
+                                            value={inputs.city}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>State</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            name="state"
+                                            placeholder="Enter your state"
+                                            value={inputs.state}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label>ZIP Code</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            name="zip_code"
+                                            placeholder="Enter your ZIP code"
+                                            value={inputs.zip_code}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* Payment Method */}
+                                    <div className="form-group">
+                                        <label>Payment Method</label>
+                                        <select className="custom-select" name="payment_method" value={inputs.payment_method} onChange={handleChange}>
+                                            <option value="Cash on Delivery">Cash on Delivery</option>
+                                            <option value="Paypal">Paypal</option>
+                                            <option value="Bank Transfer">Bank Transfer</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5">
-                                <div class="checkout-inner">
-                                    <div class="checkout-summary">
-                                        <h1>Cart Total</h1>
-                                        {items.map((item) => (
-                                            <p key={item.id}>{item.productname}<span>৳{item.price * item.quantity}</span></p>
-                                        ))}
 
-                                        <p class="sub-total">Sub Total<span>৳{cartTotal}</span></p>
-                                        <p class="ship-cost">Shipping Cost<span>৳50</span></p>
-                                        <h2>Grand Total<span>৳{cartTotal + 50}</span></h2>
-                                    </div>
-
-                                    <div class="checkout-payment">
-                                        <div class="payment-methods">
-                                            <h1>Payment Methods</h1>
-                                            <div class="payment-method">
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" id="payment-1" name="payment" />
-                                                    <label class="custom-control-label" for="payment-1">Paypal</label>
-                                                </div>
-                                                <div class="payment-content" id="payment-1-show">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt orci ac eros volutpat maximus lacinia quis diam.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="payment-method">
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" id="payment-2" name="payment" />
-                                                    <label class="custom-control-label" for="payment-2">Payoneer</label>
-                                                </div>
-                                                <div class="payment-content" id="payment-2-show">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt orci ac eros volutpat maximus lacinia quis diam.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="payment-method">
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" id="payment-3" name="payment" />
-                                                    <label class="custom-control-label" for="payment-3">Check Payment</label>
-                                                </div>
-                                                <div class="payment-content" id="payment-3-show">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt orci ac eros volutpat maximus lacinia quis diam.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="payment-method">
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" id="payment-4" name="payment" />
-                                                    <label class="custom-control-label" for="payment-4">Direct Bank Transfer</label>
-                                                </div>
-                                                <div class="payment-content" id="payment-4-show">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt orci ac eros volutpat maximus lacinia quis diam.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="payment-method">
-                                                <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input" id="payment-5" name="payment" />
-                                                    <label class="custom-control-label" for="payment-5">Cash on Delivery</label>
-                                                </div>
-                                                <div class="payment-content" id="payment-5-show">
-                                                    <p>
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt orci ac eros volutpat maximus lacinia quis diam.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="checkout-btn">
-                                            <button>Place Order</button>
-                                        </div>
-                                    </div>
+                            <div className="col-lg-5">
+                                <div className="checkout-summary">
+                                    <h1>Cart Total</h1>
+                                    {items.map((item) => (
+                                        <p key={item.id}>{item.productname}<span>৳{item.price * item.quantity}</span></p>
+                                    ))}
+                                    <p className="sub-total">Sub Total<span>৳{cartTotal}</span></p>
+                                    <p className="ship-cost">Shipping Cost<span>৳50</span></p>
+                                    <h2>Grand Total<span>৳{cartTotal + 50}</span></h2>
                                 </div>
+                                <button type="submit" className="btn btn-primary">Place Order</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
-                {/* Checkout End */}
-
-
-
-            </>
-
-
-
-
-
-
-
+            </div>
         </AdminLayout>
-    )
+    );
 }
 
-export default Checkout
+export default Checkout;

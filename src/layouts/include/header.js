@@ -163,7 +163,7 @@ function Header() {
                                     <i className="fa fa-shopping-cart"></i>
                                     <span>({totalItems})</span>
                                 </a>      */}
-                                <Link to="/Checkout" className="btn cart">
+                                <Link to="/Cart" className="btn cart">
                                     <i className="fa fa-shopping-cart"></i>
                                     <span>({totalItems})</span>
                                 </Link>
