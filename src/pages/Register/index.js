@@ -23,7 +23,7 @@ function Register() {
     //     navigate('/login')
     // }
 
-    const [inputs, setInputs] = useState({ id: '', full_name: '', email: '', phone: '', password: '', c_password: '', address: '', state: ''});
+    const [inputs, setInputs] = useState({ id: '', full_name: '', address: '', email: '', phone: '', password: '', c_password: '',  state: ''});
     const navigate = useNavigate();
     const { id } = useParams();
 
@@ -86,6 +86,12 @@ function Register() {
                     </div>
                     <div className="col-12">
                         <div className="form-group">
+                            <label htmlFor="address">Address</label>
+                            <input className="form-control" type="address" name="address" placeholder="address" onChange={handleChange} required />
+                        </div>
+                    </div>
+                    <div className="col-12">
+                        <div className="form-group">
                             <label htmlFor="email">Email</label>
                             <input className="form-control" type="email" name="email" placeholder="Email" onChange={handleChange} required />
                         </div>
@@ -108,12 +114,7 @@ function Register() {
                             <input className="form-control" type="c_password" name="c_password" placeholder="Confirm Password" onChange={handleChange} required />
                         </div>
                     </div>
-                    <div className="col-12">
-                        <div className="form-group">
-                            <label htmlFor="address">Address</label>
-                            <input className="form-control" type="address" name="address" placeholder="address" onChange={handleChange} required />
-                        </div>
-                    </div>
+                    
                     <div className="col-12">
                         <div className="form-group">
                             <label htmlFor="c_password">State</label>
