@@ -1,31 +1,32 @@
-import React from 'react'
-import { logout } from '../../Api/AllApi'
-import { useLocation, Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { logout } from '../../Api/AllApi';
+import { useLocation, Link } from 'react-router-dom';
 import { useCart } from "react-use-cart";
-
 
 function Header() {
     const { totalItems } = useCart();
+    const [wishlist, setWishlist] = React.useState(0); // For wishlist item count
+
     const activeMenu = (e) => {
-        document.querySelectorAll('.submenu').forEach(
-            function (e) {
-                e.classList.remove('active');
-            }
-        )
+        document.querySelectorAll('.submenu').forEach((elem) => elem.classList.remove('active'));
         const childElement = e.target.parentElement.querySelector('.submenu');
         if (childElement && childElement.classList.contains('submenu')) {
             childElement.classList.add('active');
         }
-    }
+    };
 
     const location = useLocation();
     const isLinkActive = (path) => {
-        return location.pathname == path ? 'active' : "";
-    }
+        return location.pathname === path ? 'active' : '';
+    };
+
+    const handleLogout = async () => {
+        await logout();
+        // Redirect or show a logout confirmation if needed
+    };
 
     return (
         <>
-
             <div className="top-bar">
                 <div className="container-fluid">
                     <div className="row">
@@ -41,8 +42,7 @@ function Header() {
                 </div>
             </div>
 
-
-            <div className='sticky-top'>
+            <div className="sticky-top">
                 <div className="nav">
                     <div className="container-fluid">
                         <nav className="navbar navbar-expand-md bg-dark navbar-dark">
@@ -53,62 +53,33 @@ function Header() {
 
                             <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                                 <div className="navbar-nav mr-auto">
-                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Home") ? 'active' : ''}`}>
-                                        <Link to="/" className="sidebar-link nav-link">
-                                            <span className="menu-title">Home</span>
-                                        </Link>
+                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/")}`}>
+                                        <Link to="/" className="nav-link">Home</Link>
                                     </li>
-                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Products") ? 'active' : ''}`}>
-                                        <Link to="/Products" className="sidebar-link nav-link">
-                                            <span className="menu-title">Products</span>
-                                        </Link>
+                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Products")}`}>
+                                        <Link to="/Products" className="nav-link">Products</Link>
                                     </li>
-                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/AllProducts") ? 'active' : ''}`}>
-                                        <Link to="/AllProducts" className="sidebar-link nav-link">
-                                            <span className="menu-title">All Products</span>
-                                        </Link>
+                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/AllProducts")}`}>
+                                        <Link to="/AllProducts" className="nav-link">All Products</Link>
                                     </li>
-                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/ProductDetails") ? 'active' : ''}`}>
-                                        <Link to="/ProductDetails" className="sidebar-link nav-link">
-                                            <span className="menu-title">Product Details</span>
-                                        </Link>
+                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Cart")}`}>
+                                        <Link to="/Cart" className="nav-link">Cart</Link>
                                     </li>
-                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Cart") ? 'active' : ''}`}>
-                                        <Link to="/Cart" className="sidebar-link nav-link">
-                                            <span className="menu-title">Cart</span>
-                                        </Link>
+                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Checkout")}`}>
+                                        <Link to="/Checkout" className="nav-link">Checkout</Link>
                                     </li>
-                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Checkout") ? 'active' : ''}`}>
-                                        <Link to="/Checkout" className="sidebar-link nav-link">
-                                            <span className="menu-title">Checkout</span>
-                                        </Link>
-                                    </li>
-                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/MyAccount") ? 'active' : ''}`}>
-                                        <Link to="/MyAccount" className="sidebar-link nav-link">
-                                            <span className="menu-title">My Account</span>
-                                        </Link>
+                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/MyAccount")}`}>
+                                        <Link to="/MyAccount" className="nav-link">My Account</Link>
                                     </li>
                                     <div className="nav-item dropdown">
                                         <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                                         <div className="dropdown-menu">
-                                            <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Wishlist") ? 'active' : ''}`}>
-                                                <Link to="/Wishlist" className="sidebar-link nav-link">
-                                                    <span className="menu-title dropdown-item">Wishlist</span>
-                                                </Link>
+                                            <li className={`nav-item ${isLinkActive("/Wishlist")}`}>
+                                                <Link to="/Wishlist" className="dropdown-item">Wishlist</Link>
                                             </li>
-                                            <li onClick={activeMenu} className={`nav-item ${isLinkActive("/ContactUs") ? 'active' : ''}`}>
-                                                <Link to="/ContactUs" className="sidebar-link nav-link">
-                                                    <span className="menu-title dropdown-item">Contact Us</span>
-                                                </Link>
+                                            <li className={`nav-item ${isLinkActive("/ContactUs")}`}>
+                                                <Link to="/ContactUs" className="dropdown-item">Contact Us</Link>
                                             </li>
-                                            {/* <a href="login.html" className="dropdown-item">Login & Register</a> */}
-                                        </div>
-                                    </div>
-                                    <div className="nav-item dropdown">
-                                        <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Content</a>
-                                        <div className="dropdown-menu">
-                                            <a href="login.html" className="dropdown-item">Blog</a>
-                                            <a href="contact.html" className="dropdown-item">FAQs</a>
                                         </div>
                                     </div>
                                 </div>
@@ -116,16 +87,21 @@ function Header() {
                                     <div className="nav-item dropdown">
                                         <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
                                         <div className="dropdown-menu">
-                                            <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Login") ? 'active' : ''}`}>
-                                                <Link to="/Login" className="sidebar-link nav-link">
-                                                    <span className="menu-title dropdown-item">Login</span>
-                                                </Link>
+                                            <li className={`nav-item ${isLinkActive("/Login")}`}>
+                                                <Link to="/Login" className="dropdown-item">Login</Link>
                                             </li>
-                                            <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Register") ? 'active' : ''}`}>
-                                                <Link to="/Register" className="sidebar-link nav-link">
-                                                    <span className="menu-title dropdown-item">Register</span>
-                                                </Link>
+                                            <li className={`nav-item ${isLinkActive("/Register")}`}>
+                                                <Link to="/Register" className="dropdown-item">Register</Link>
                                             </li>
+                                            <li className={`nav-item ${isLinkActive("/")}`}>
+                                                <Link to="/" className="dropdown-item">My Profile</Link>
+                                            </li>
+                                            <li className={`nav-item ${isLinkActive("/")}`}>
+                                                <Link to="/" className="dropdown-item">My Order</Link>
+                                            </li>
+                                            {/* <li className={`nav-item`}>
+                                                <button onClick={handleLogout} className="dropdown-item">Logout</button>
+                                            </li> */}
                                         </div>
                                     </div>
                                 </div>
@@ -133,9 +109,7 @@ function Header() {
                         </nav>
                     </div>
                 </div>
-
             </div>
-
 
             <div className="bottom-bar">
                 <div className="container-fluid">
@@ -155,27 +129,22 @@ function Header() {
                         </div>
                         <div className="col-md-3">
                             <div className="user">
-                                <a href="wishlist.html" className="btn wishlist">
+                                <Link to="/Wishlist" className="btn cart">
                                     <i className="fa fa-heart"></i>
-                                    <span>(0)</span>
-                                </a>
-                                {/* <a href="cart.html" className="btn cart">
-                                    <i className="fa fa-shopping-cart"></i>
-                                    <span>({totalItems})</span>
-                                </a>      */}
+                                    <span>({wishlist})</span>
+                                </Link>
+
                                 <Link to="/Cart" className="btn cart">
                                     <i className="fa fa-shopping-cart"></i>
                                     <span>({totalItems})</span>
                                 </Link>
-                                      
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </>
-    )
+    );
 }
 
-export default Header
+export default Header;

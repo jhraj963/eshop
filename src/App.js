@@ -11,6 +11,7 @@ import Checkout from './pages/Checkout';
 import MyAccount from './pages/MyAccount';
 import Wishlist from './pages/Wishlist';
 import ContactUs from './pages/ContactUs';
+import Invoice from './pages/Invoice';
 import { CartProvider } from "react-use-cart";
 // import './App.css';
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/MyAccount" element={<MyAccount />} />
           <Route path="/Wishlist" element={<Wishlist />} />
           <Route path="/ContactUs" element={<ContactUs />} />
+          <Route path="/Invoice" element={<Invoice />} />
 
 
         </Routes>

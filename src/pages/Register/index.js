@@ -40,24 +40,24 @@ function Register() {
                             <input className="form-control" type="text" name="full_name" id="full_name" placeholder="Full Name" onChange={handleChange} required />
                         </div>
                     </div>
-                    {/* <div className="col-12">
+                    <div className="col-12">
                         <div className="form-group">
                             <label htmlFor="address">Address</label>
                             <input className="form-control" type="address" name="address" id="address" placeholder="address" onChange={handleChange} required />
                         </div>
-                    </div> */}
+                    </div>
                     <div className="col-12">
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
                             <input className="form-control" type="email" name="email" id="email" placeholder="Email" onChange={handleChange} required />
                         </div>
                     </div>
-                    {/* <div className="col-12">
+                    <div className="col-12">
                         <div className="form-group">
                             <label htmlFor="phone">Phone</label>
                             <input className="form-control" type="text" name="phone" id="phone" placeholder="Phone" onChange={handleChange} required />
                         </div>
-                    </div> */}
+                    </div>
                     <div className="col-12">
                         <div className="form-group">
                             <label htmlFor="password">Password</label>

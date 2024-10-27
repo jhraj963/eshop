@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../components/axios';
 import AdminLayout from '../../layouts/AdminLayout';
-import { Link } from 'react-router-dom';
 import { useCart } from "react-use-cart";
 
 function AllProducts() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [wishlist, setWishlist] = useState([]); // State for wishlist items
     const { addItem } = useCart();
 
     useEffect(() => {
@@ -25,7 +25,15 @@ function AllProducts() {
         }
     };
 
-  
+    // Function to add item to wishlist
+    const addToWishlist = (item) => {
+        setWishlist((prevWishlist) => {
+            if (!prevWishlist.some((wishlistItem) => wishlistItem.id === item.id)) {
+                return [...prevWishlist, item];
+            }
+            return prevWishlist;
+        });
+    };
 
     return (
         <AdminLayout>
@@ -59,10 +67,12 @@ function AllProducts() {
                                                         ))}
                                                     </a>
                                                     <div className="product-action">
-                                                        <button type='button' className="btn btn-link" onClick={() => { addItem(d) }}><i className="fa fa-cart-plus"></i></button>
-                                                        <button type='button' className="btn btn-link"><i className="fa fa-heart"></i></button>
-                                                        <button type='button' className="btn btn-link"><i className="fa fa-search"></i></button>
-                                                        {/* <button onClick={() => deleteData(d.id)}><i className="fa fa-trash"></i></button> */}
+                                                        <button type="button" className="btn btn-link" onClick={() => addItem(d)}>
+                                                            <i className="fa fa-cart-plus"></i>
+                                                        </button>
+                                                        <button type="button" className="btn btn-link" onClick={() => addToWishlist(d)}>
+                                                            <i className="fa fa-heart"></i>
+                                                        </button>
                                                     </div>
                                                 </div>
                                                 <div className="product-price">
@@ -76,77 +86,8 @@ function AllProducts() {
                                     <div>No products available</div>
                                 )}
                             </div>
-                            {/* Pagination and other components here */}
-                            <div className="col-md-12">
-                                <nav aria-label="Page navigation example">
-                                    <ul className="pagination justify-content-center">
-                                        <li className="page-item disabled">
-                                            <a className="page-link" href="#" tabindex="-1">Previous</a>
-                                        </li>
-                                        <li className="page-item active"><a className="page-link" href="#">1</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">3</a></li>
-                                        <li className="page-item">
-                                            <a className="page-link" href="#">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
                         </div>
-                        {/* Sidebar and other layout elements */}
-                        <div className="col-lg-4 sidebar">
-                            <div className="sidebar-widget category">
-                                <h2 className="title">Category</h2>
-                                <nav className="navbar bg-light">
-                                    <ul className="navbar-nav">
-                                        <li className="nav-item">
-                                            <a className="nav-link" href="#"><i className="fa fa-female"></i>Fashion & Beauty</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className="nav-link" href="#"><i className="fa fa-child"></i>Kids & Babies Clothes</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className="nav-link" href="#"><i className="fa fa-tshirt"></i>Men & Women Clothes</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className="nav-link" href="#"><i className="fa fa-mobile-alt"></i>Gadgets & Accessories</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a className="nav-link" href="#"><i className="fa fa-microchip"></i>Electronics & Accessories</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-
-
-                            <div className="sidebar-widget brands">
-                                <h2 className="title">Our Brands</h2>
-                                <ul>
-                                    <li><a href="#">Nulla </a><span>(45)</span></li>
-                                    <li><a href="#">Curabitur </a><span>(34)</span></li>
-                                    <li><a href="#">Nunc </a><span>(67)</span></li>
-                                    <li><a href="#">Ullamcorper</a><span>(74)</span></li>
-                                    <li><a href="#">Fusce </a><span>(89)</span></li>
-                                    <li><a href="#">Sagittis</a><span>(28)</span></li>
-                                </ul>
-                            </div>
-
-                            <div className="sidebar-widget tag">
-                                <h2 className="title">Tags Cloud</h2>
-                                <a href="#">Lorem ipsum</a>
-                                <a href="#">Vivamus</a>
-                                <a href="#">Phasellus</a>
-                                <a href="#">pulvinar</a>
-                                <a href="#">Curabitur</a>
-                                <a href="#">Fusce</a>
-                                <a href="#">Sem quis</a>
-                                <a href="#">Mollis metus</a>
-                                <a href="#">Sit amet</a>
-                                <a href="#">Vel posuere</a>
-                                <a href="#">orci luctus</a>
-                                <a href="#">Nam lorem</a>
-                            </div>
-                        </div>
+                        {/* Sidebar, categories, brands, and other components */}
                     </div>
                 </div>
             </div>
