@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthLayout from '../../layouts/AuthLayout';
-import { register } from '../../Api/AllApi';
+import { cusregister } from '../../Api/AllApi';
 
 function Register() {
 
@@ -22,7 +21,7 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await register(inputs);
+        await cusregister(inputs);
         navigate('/login')
     }
 
@@ -38,46 +37,46 @@ function Register() {
                     <div className="col-12">
                         <div className="form-group">
                             <label htmlFor="full_name">Full Name</label>
-                            <input className="form-control" type="text" name="full_name" placeholder="Full Name" onChange={handleChange} required />
+                            <input className="form-control" type="text" name="full_name" id="full_name" placeholder="Full Name" onChange={handleChange} required />
                         </div>
                     </div>
-                    <div className="col-12">
+                    {/* <div className="col-12">
                         <div className="form-group">
                             <label htmlFor="address">Address</label>
-                            <input className="form-control" type="address" name="address" placeholder="address" onChange={handleChange} required />
+                            <input className="form-control" type="address" name="address" id="address" placeholder="address" onChange={handleChange} required />
                         </div>
-                    </div>
+                    </div> */}
                     <div className="col-12">
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input className="form-control" type="email" name="email" placeholder="Email" onChange={handleChange} required />
+                            <input className="form-control" type="email" name="email" id="email" placeholder="Email" onChange={handleChange} required />
                         </div>
                     </div>
-                    <div className="col-12">
+                    {/* <div className="col-12">
                         <div className="form-group">
                             <label htmlFor="phone">Phone</label>
-                            <input className="form-control" type="text" name="phone" placeholder="Phone" onChange={handleChange} required />
+                            <input className="form-control" type="text" name="phone" id="phone" placeholder="Phone" onChange={handleChange} required />
                         </div>
-                    </div>
+                    </div> */}
                     <div className="col-12">
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
-                            <input className="form-control" type="password" name="password" placeholder="Password" onChange={handleChange} required />
+                            <input className="form-control" type="password" name="password" id="password" placeholder="Password" onChange={handleChange} required />
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="form-group">
                             <label htmlFor="c_password">Confirm Password</label>
-                            <input className="form-control" type="c_password" name="c_password" placeholder="Confirm Password" onChange={handleChange} required />
+                            <input className="form-control" type="password" name="c_password" id="c_password" placeholder="Confirm Password" onChange={handleChange} required />
                         </div>
                     </div>
                     
-                    <div className="col-12">
+                    {/* <div className="col-12">
                         <div className="form-group">
                             <label htmlFor="c_password">State</label>
                             <input className="form-control" type="state" name="state" placeholder="state" onChange={handleChange} required />
                         </div>
-                    </div>
+                    </div> */}
 
                 </div>
                 <Link to="/login">Have an account? Login</Link>

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-const login = async (data) => {
-    const LOGIN_ENDPOINT = `${process.env.REACT_APP_API_URL}/login`;
+const cuslogin = async (data) => {
+    const LOGIN_ENDPOINT = `${process.env.REACT_APP_API_URL}/cuslogin`;
     try {
         let response = await axios({
             method: 'post',
@@ -22,8 +22,8 @@ const login = async (data) => {
         console.log(e);
     }
 }
-const register = async (data) => {
-    const SIGNUP_ENDPOINT = `${process.env.REACT_APP_API_URL}/register`;
+const cusregister = async (data) => {
+    const SIGNUP_ENDPOINT = `${process.env.REACT_APP_API_URL}/cusregister`;
     try {
         let response = await axios({
             method: 'post',
@@ -49,4 +49,4 @@ const logout = () => {
     localStorage.removeItem("userdata");
 }
 
-export { login, register, logout }
+export { cuslogin, cusregister, logout }
