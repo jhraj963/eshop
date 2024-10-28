@@ -1,17 +1,50 @@
+// import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+
+// function Invoice() {
+//   const [data, setData] = useState([]);
+
+//   useEffect(() => {
+//     getDatas();
+//   }, []);
+
+//   const getDatas = () => {
+//     axios.get(`${process.env.REACT_APP_API_URL}/allorder/`)
+//       .then((response) => {
+//         setData(response.data.data);
+//       });
+//   };
+
+//   const calculateSubtotal = () => {
+//     return data.reduce((sum, item) => {
+//       const price = item.price || 0;      // Default to 0 if undefined
+//       const quantity = item.quantity || 0; // Default to 0 if undefined
+//       return sum + price * quantity;
+//     }, 0);
+//   };
+
+//   const TAX_RATE = 0.12; // assuming 12% tax rate
+//   const subtotal = calculateSubtotal();
+//   const tax = subtotal * TAX_RATE;
+//   const grandTotal = subtotal + tax;
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Invoice() {
+function Invoice({ customerId }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     getDatas();
-  }, []);
+  }, [customerId]); // Depend on customerId
 
   const getDatas = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/allorder/`)
+    axios.get(`${process.env.REACT_APP_API_URL}/orders?customerId=${customerId}`) // Update your endpoint
       .then((response) => {
         setData(response.data.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
       });
   };
 
@@ -46,13 +79,13 @@ function Invoice() {
                     </div>
                     <div className="col-sm-6 invoice-id">
                       <div className="info">
-                        <h1 className="color-white inv-header-1">Invoice</h1>
+                        <h2 className="color-white inv-header-1">Invoice</h2>
                         <p className="color-white mb-1">Invoice Number <span>#45613</span></p>
                         <p className="color-white mb-0">Invoice Date <span>{new Date().toLocaleDateString()}</span></p>
                       </div>
                     </div>
                   </div>
-                </div>
+                </div><br/>
                 <div className="invoice-top">
                   <div className="row">
                     <div className="col-sm-6">
@@ -68,12 +101,12 @@ function Invoice() {
                     </div>
                     <div className="col-sm-6">
                       <div className="invoice-number mb-30">
-                        <h4 className="inv-title-1">Invoice From</h4>
+                        <h4 className="inv-title-1 text-bold">Invoice From</h4>
                         <h2 className="name mb-10">E-SHOPPER</h2>
                         <p className="invo-addr-1">
-                          Apexo Inc <br />
-                          billing@apexo.com <br />
-                          169 Teroghoria, Bangladesh <br />
+                          e-shopper@gmail.com <br />
+                          Bordighir Phar <br />
+                          Chattogram, Bangladesh <br />
                         </p>
                       </div>
                     </div>
@@ -144,14 +177,14 @@ function Invoice() {
                   <div className="row g-0">
                     <div className="col-lg-9 col-md-11 col-sm-12">
                       <div className="contact-info">
-                        <a href="tel:+00-123-647-840">
-                          <i className="fa fa-phone"></i> +00 123 647 840
+                        <a href="#">
+                          <i className="fa fa-phone"></i> +800 01572 378254
                         </a>
-                        <a href="mailto:info@themevessel.com">
-                          <i className="fa fa-envelope"></i> info@themevessel.com
+                        <a href="#">
+                          <i className="fa fa-envelope"></i> e-shopper@gmail.com
                         </a>
                         <a href="#" className="mr-0 d-none-580">
-                          <i className="fa fa-map-marker"></i> 169 Teroghoria, Bangladesh
+                          <i className="fa fa-map-marker"></i> 169 Chattogram, Bangladesh
                         </a>
                       </div>
                     </div>
