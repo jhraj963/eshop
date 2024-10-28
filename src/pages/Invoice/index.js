@@ -137,17 +137,17 @@ function Invoice({ customerId }) {
                         <tr className="tr2">
                           <td colSpan="3"></td>
                           <td className="text-center">SubTotal</td>
-                          <td className="text-end">${subtotal.toFixed(2)}</td>
+                          <td className="text-end">৳{subtotal.toFixed(2)}</td>
                         </tr>
                         <tr className="tr2">
                           <td colSpan="3"></td>
                           <td className="text-center">Tax</td>
-                          <td className="text-end">${tax.toFixed(2)}</td>
+                          <td className="text-end">৳{tax.toFixed(2)}</td>
                         </tr>
                         <tr className="tr2">
                           <td colSpan="3"></td>
                           <td className="text-center f-w-600 active-color">Grand Total</td>
-                          <td className="f-w-600 text-end active-color">${grandTotal.toFixed(2)}</td>
+                          <td className="f-w-600 text-end active-color">৳{grandTotal.toFixed(2)}</td>
                         </tr>
                       </tbody>
                     </table>

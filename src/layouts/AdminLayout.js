@@ -14,7 +14,7 @@ function AdminLayout({ children }) {
     <div id="app">
       <div className="container-scroller">
         <Header />
-        <div className="container-fluid page-body-wrapper"> 
+        <div className="page-body-wrapper"> 
           {/* <Sidebar /> */}
           <div id="main" className='main-panel'>
             {children}
