@@ -70,7 +70,7 @@ function AllProducts() {
                                                         <button type="button" className="btn btn-link" onClick={() => addItem(d)}>
                                                             <i className="fa fa-cart-plus"></i>
                                                         </button>
-                                                        <button type="button" className="btn btn-link" onClick={() => addToWishlist(d)}>
+                                                        <button type="button" className="btn btn-link" onClick={() => addItem(d)}>
                                                             <i className="fa fa-heart"></i>
                                                         </button>
                                                     </div>

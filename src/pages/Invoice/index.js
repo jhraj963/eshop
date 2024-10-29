@@ -1,62 +1,44 @@
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-
-// function Invoice() {
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     getDatas();
-//   }, []);
-
-//   const getDatas = () => {
-//     axios.get(`${process.env.REACT_APP_API_URL}/allorder/`)
-//       .then((response) => {
-//         setData(response.data.data);
-//       });
-//   };
-
-//   const calculateSubtotal = () => {
-//     return data.reduce((sum, item) => {
-//       const price = item.price || 0;      // Default to 0 if undefined
-//       const quantity = item.quantity || 0; // Default to 0 if undefined
-//       return sum + price * quantity;
-//     }, 0);
-//   };
-
-//   const TAX_RATE = 0.12; // assuming 12% tax rate
-//   const subtotal = calculateSubtotal();
-//   const tax = subtotal * TAX_RATE;
-//   const grandTotal = subtotal + tax;
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Invoice({ customerId }) {
   const [data, setData] = useState([]);
+  const [customer, setCustomer] = useState(null); // State for customer data
 
   useEffect(() => {
     getDatas();
-  }, [customerId]); // Depend on customerId
+    getCustomerData(); // Fetch customer data
+  }, [customerId]);
 
   const getDatas = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/orders?customerId=${customerId}`) // Update your endpoint
+    axios.get(`${process.env.REACT_APP_API_URL}/orders?customerId=${customerId}`) // Correct endpoint
       .then((response) => {
         setData(response.data.data);
       })
       .catch((error) => {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching order data:', error);
+      });
+  };
+
+  const getCustomerData = () => {
+    axios.get(`${process.env.REACT_APP_API_URL}/customers/${customerId}`) // Fetch customer details
+      .then((response) => {
+        setCustomer(response.data.data); // Assuming the API returns customer data
+      })
+      .catch((error) => {
+        console.error('Error fetching customer data:', error);
       });
   };
 
   const calculateSubtotal = () => {
     return data.reduce((sum, item) => {
-      const price = item.price || 0;      // Default to 0 if undefined
-      const quantity = item.quantity || 0; // Default to 0 if undefined
+      const price = item.price || 0;
+      const quantity = item.quantity || 0;
       return sum + price * quantity;
     }, 0);
   };
 
-  const TAX_RATE = 0.12; // assuming 12% tax rate
+  const TAX_RATE = 0.12; // Assuming 12% tax rate
   const subtotal = calculateSubtotal();
   const tax = subtotal * TAX_RATE;
   const grandTotal = subtotal + tax;
@@ -85,17 +67,18 @@ function Invoice({ customerId }) {
                       </div>
                     </div>
                   </div>
-                </div><br/>
+                </div><br />
                 <div className="invoice-top">
                   <div className="row">
                     <div className="col-sm-6">
                       <div className="invoice-number mb-30">
                         <h4 className="inv-title-1">Invoice To</h4>
-                        <h2 className="name mb-10">John Smith</h2>
+                        <h2 className="name mb-10">{customer ? customer.customer_name : 'Loading...'}</h2>
                         <p className="invo-addr-1">
-                          Theme Vessel <br />
-                          info@themevessel.com <br />
-                          21-12 Green Street, Meherpur, Bangladesh <br />
+                          {customer ? customer.address : 'Loading...'} <br />
+                          {customer ? customer.email : 'Loading...'} <br />
+                          {customer ? customer.mobile_no : 'Loading...'} <br />
+                          {customer ? `${customer.city}, ${customer.state}, ${customer.country}, ${customer.zip_code}` : 'Loading...'}
                         </p>
                       </div>
                     </div>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { logout } from '../../Api/AllApi';
 import { useLocation, Link } from 'react-router-dom';
-import { useCart } from "react-use-cart";
+import { useCart } from 'react-use-cart';
 
 function Header() {
     const { totalItems } = useCart();
-    const [wishlist, setWishlist] = React.useState(0); // For wishlist item count
+    const [wishlist, setWishlist] = React.useState([]); // For wishlist items
 
     const activeMenu = (e) => {
         document.querySelectorAll('.submenu').forEach((elem) => elem.classList.remove('active'));
@@ -13,6 +13,19 @@ function Header() {
         if (childElement && childElement.classList.contains('submenu')) {
             childElement.classList.add('active');
         }
+    };
+
+    const addToWishlist = (item) => {
+        setWishlist((prevWishlist) => {
+            if (!prevWishlist.some((wishlistItem) => wishlistItem.id === item.id)) {
+                return [...prevWishlist, item];
+            }
+            return prevWishlist;
+        });
+    };
+
+    const removeFromWishlist = (itemId) => {
+        setWishlist((prevWishlist) => prevWishlist.filter((item) => item.id !== itemId));
     };
 
     const location = useLocation();
@@ -75,13 +88,16 @@ function Header() {
                                         <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
                                         <div className="dropdown-menu">
                                             <li className={`nav-item ${isLinkActive("/Wishlist")}`}>
-                                                <Link to="/Wishlist" className="dropdown-item">Wishlist</Link>
+                                                <Link to="/Wishlist" className="dropdown-item">Wishlist ({totalItems})</Link>
                                             </li>
-                                            <li className={`nav-item ${isLinkActive("/ContactUs")}`}>
+                                            {/* <li className={`nav-item ${isLinkActive("/ContactUs")}`}>
                                                 <Link to="/ContactUs" className="dropdown-item">Contact Us</Link>
-                                            </li>
+                                            </li> */}
                                         </div>
                                     </div>
+                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/ContactUs")}`}>
+                                        <Link to="/ContactUs" className="nav-link">Contact Us</Link>
+                                    </li>
                                 </div>
                                 <div className="navbar-nav ml-auto">
                                     <div className="nav-item dropdown">
@@ -99,9 +115,9 @@ function Header() {
                                             <li className={`nav-item ${isLinkActive("/")}`}>
                                                 <Link to="/" className="dropdown-item">My Order</Link>
                                             </li>
-                                            {/* <li className={`nav-item`}>
+                                            <li className={`nav-item`}>
                                                 <button onClick={handleLogout} className="dropdown-item">Logout</button>
-                                            </li> */}
+                                            </li>
                                         </div>
                                     </div>
                                 </div>
@@ -131,7 +147,7 @@ function Header() {
                             <div className="user">
                                 <Link to="/Wishlist" className="btn cart">
                                     <i className="fa fa-heart"></i>
-                                    <span>({wishlist})</span>
+                                    <span>({totalItems})</span>
                                 </Link>
 
                                 <Link to="/Cart" className="btn cart">
