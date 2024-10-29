@@ -41,24 +41,46 @@ function Checkout() {
         setInputs(values => ({ ...values, [name]: value }));
     };
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     console.log(inputs);
+
+    //     try {
+    //         let apiurl = inputs.id ? `/allorder/edit/${inputs.id}` : `/allorder/create`;
+
+    //         let response = await axios.post(`${process.env.REACT_APP_API_URL}${apiurl}`, {
+    //             ...inputs,
+    //             payment_method: inputs.payment_method || 'Cash on Delivery',
+    //             items,
+    //             total_amount: cartTotal + 50 // Add shipping cost
+    //         });
+    //         navigate('/');
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
+    // };
+
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        console.log(inputs);
+    e.preventDefault();
+    console.log(inputs);
 
-        try {
-            let apiurl = inputs.id ? `/allorder/edit/${inputs.id}` : `/allorder/create`;
+    try {
+        let apiurl = inputs.id ? `/allorder/edit/${inputs.id}` : `/allorder/create`;
 
-            let response = await axios.post(`${process.env.REACT_APP_API_URL}${apiurl}`, {
-                ...inputs,
-                payment_method: inputs.payment_method || 'Cash on Delivery',
-                items,
-                total_amount: cartTotal + 50 // Add shipping cost
-            });
-            navigate('/');
-        } catch (e) {
-            console.log(e);
-        }
-    };
+        let response = await axios.post(`${process.env.REACT_APP_API_URL}${apiurl}`, {
+            ...inputs,
+            payment_method: inputs.payment_method || 'Cash on Delivery',
+            items,
+            total_amount: cartTotal + 50 // Add shipping cost
+        });
+        
+        // Navigate to the invoice page with the order ID
+        navigate(`/Invoice/${response.data.data.id}`);
+    } catch (e) {
+        console.log(e);
+    }
+};
+
 
     return (
         <AdminLayout>

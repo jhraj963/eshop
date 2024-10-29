@@ -39,12 +39,13 @@ function AllProducts() {
         <AdminLayout>
             <div className="product-view">
                 <div className="container-fluid">
+                    <h2>All Products</h2>
                     <div className="row">
-                        <div className="col-lg-8">
+                        <div className="col-lg-12">
                             <div className="row">
                                 {data.length > 0 ? (
                                     data.map((d) => (
-                                        <div className="col-md-4" key={d.id}>
+                                        <div className="col-md-3" key={d.id}>
                                             <div className="product-item">
                                                 <div className="product-title">
                                                     <a href="#">{d.productname}</a>

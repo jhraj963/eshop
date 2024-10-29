@@ -34,6 +34,7 @@ function App() {
           <Route path="/Wishlist" element={<Wishlist />} />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/Invoice" element={<Invoice />} />
+          <Route path="/Invoice/:orderId" element={<Invoice />} />
 
 
         </Routes>
