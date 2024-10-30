@@ -75,7 +75,11 @@ function Home() {
                                         <img src="assets/img/slider-1.jpg" alt="Slider Image" />
                                         <div className="header-slider-caption">
                                             <p>Some text goes here that describes the image</p>
-                                            <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Shop Now</a>
+                                            <Link to="/AllProducts" className=""><a className="btn"><i className="fa fa-shopping-cart"></i>Shop Now</a></Link>
+                                            {/* <Link to="/AllProducts" className="btn btn-sm dropdown-item">
+                                                <i className="fa fa-shopping-cart"></i> Shop Now
+                                            </Link> */}
+
                                         </div>
                                     </div>
                                     {/* <div className="header-slider-item">
@@ -566,6 +570,9 @@ function Home() {
                         </div>
                     </div>
                 </div>
+
+
+              
             </>
         </AdminLayout>
     )

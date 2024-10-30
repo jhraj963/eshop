@@ -69,9 +69,9 @@ function Header() {
                                     <li onClick={activeMenu} className={`nav-item ${isLinkActive("/")}`}>
                                         <Link to="/" className="nav-link">Home</Link>
                                     </li>
-                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Products")}`}>
+                                    {/* <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Products")}`}>
                                         <Link to="/Products" className="nav-link">Products</Link>
-                                    </li>
+                                    </li> */}
                                     <li onClick={activeMenu} className={`nav-item ${isLinkActive("/AllProducts")}`}>
                                         <Link to="/AllProducts" className="nav-link">All Products</Link>
                                     </li>
@@ -132,9 +132,9 @@ function Header() {
                     <div className="row align-items-center">
                         <div className="col-md-3">
                             <div className="logo">
-                                <a href="index.html">
+                                <Link to="/" className=""><a >
                                     <img src="assets/img/logo.png" alt="Logo" width="90%" />
-                                </a>
+                                </a></Link>
                             </div>
                         </div>
                         <div className="col-md-6">
