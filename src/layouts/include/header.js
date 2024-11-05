@@ -75,12 +75,26 @@ function Header() {
                                     <li onClick={activeMenu} className={`nav-item ${isLinkActive("/AllProducts")}`}>
                                         <Link to="/AllProducts" className="nav-link">All Products</Link>
                                     </li>
-                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Cart")}`}>
+                                    <div className="nav-item dropdown">
+                                        <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">Category</a>
+                                        <div className="dropdown-menu">
+                                            <li className={`nav-item ${isLinkActive("/Mens")}`}>
+                                                <Link to="/Mens" className="dropdown-item">Mens</Link>
+                                            </li>
+                                            <li className={`nav-item ${isLinkActive("/Womens")}`}>
+                                                <Link to="/Womens" className="dropdown-item">Womens</Link>
+                                            </li>
+                                            <li className={`nav-item ${isLinkActive("/Kids")}`}>
+                                                <Link to="/Kids" className="dropdown-item">Kids</Link>
+                                            </li>
+                                        </div>
+                                    </div>
+                                    {/* <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Cart")}`}>
                                         <Link to="/Cart" className="nav-link">Cart</Link>
                                     </li>
                                     <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Checkout")}`}>
                                         <Link to="/Checkout" className="nav-link">Checkout</Link>
-                                    </li>
+                                    </li> */}
                                     <li onClick={activeMenu} className={`nav-item ${isLinkActive("/MyAccount")}`}>
                                         <Link to="/MyAccount" className="nav-link">My Account</Link>
                                     </li>

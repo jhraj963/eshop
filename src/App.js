@@ -4,6 +4,9 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
 import AllProducts from './pages/AllProducts';
+import Mens from './pages/Category/Mens';
+import Womens from './pages/Category/Womens';
+import Kids from './pages/Category/Kids';
 import Products from './pages/Products';
 import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
@@ -26,6 +29,9 @@ function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/" element={<Home />} />
           <Route path="/AllProducts" element={<AllProducts />} />
+          <Route path="/Mens" element={<Mens />} />
+          <Route path="/Womens" element={<Womens />} />
+          <Route path="/Kids" element={<Kids />} />
           <Route path="/Products" element={<Products />} />
           <Route path="/ProductDetails" element={<ProductDetails />} />
           <Route path="/Cart" element={<Cart />} />

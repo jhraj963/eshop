@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import axios from '../../components/axios';
-import AdminLayout from '../../layouts/AdminLayout';
+import axios from '../../../components/axios';
+import AdminLayout from '../../../layouts/AdminLayout';
 import { useCart } from "react-use-cart";
 
-function AllProducts() {
+function Womens() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [wishlist, setWishlist] = useState([]); // State for wishlist items
+    const [wishlist, setWishlist] = useState([]);
     const { addItem } = useCart();
+
+    
+    const categoryToShow = "2"; 
 
     useEffect(() => {
         getDatas();
@@ -16,8 +19,12 @@ function AllProducts() {
 
     const getDatas = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/addproduct/`); // Corrected syntax
-            setData(response.data.data);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/addproduct/`);
+            // Filter the data to only include products from the desired category
+            const filteredData = response.data.data.filter(
+                (product) => product.category_id === categoryToShow
+            );
+            setData(filteredData);
         } catch (err) {
             setError("Failed to fetch products.");
         } finally {
@@ -25,7 +32,6 @@ function AllProducts() {
         }
     };
 
-    // Function to add item to wishlist
     const addToWishlist = (item) => {
         setWishlist((prevWishlist) => {
             if (!prevWishlist.some((wishlistItem) => wishlistItem.id === item.id)) {
@@ -39,7 +45,8 @@ function AllProducts() {
         <AdminLayout>
             <div className="product-view">
                 <div className="container-fluid">
-                    <h2>All Products</h2>
+                    {/* <h2>{categoryToShow} Products</h2> */}
+                    <h2>Womens Collection</h2>
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="row">
@@ -60,7 +67,7 @@ function AllProducts() {
                                                         {d.photo.split(',').map((src, i) => (
                                                             <img
                                                                 key={i}
-                                                                src={`${process.env.REACT_APP_BACKEND_URL}/addproduct/${src}`} // Corrected syntax
+                                                                src={`${process.env.REACT_APP_BACKEND_URL}/addproduct/${src}`}
                                                                 alt="Product"
                                                                 width="100%"
                                                                 style={{ display: i === 0 ? 'block' : 'none' }}
@@ -68,17 +75,30 @@ function AllProducts() {
                                                         ))}
                                                     </a>
                                                     <div className="product-action">
-                                                        <button type="button" className="btn btn-link" onClick={() => addItem(d)}>
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-link"
+                                                            onClick={() => addItem(d)}
+                                                        >
                                                             <i className="fa fa-cart-plus"></i>
                                                         </button>
-                                                        <button type="button" className="btn btn-link" onClick={() => addToWishlist(d)}>
+                                                        <button
+                                                            type="button"
+                                                            className="btn btn-link"
+                                                            onClick={() => addToWishlist(d)}
+                                                        >
                                                             <i className="fa fa-heart"></i>
                                                         </button>
                                                     </div>
                                                 </div>
                                                 <div className="product-price">
-                                                    <h3><span>৳</span>{d.price || 99}</h3>
-                                                    <a className="btn" href="#"><i className="fa fa-shopping-cart"></i> Buy Now</a>
+                                                    <h3>
+                                                        <span>৳</span>
+                                                        {d.price || 99}
+                                                    </h3>
+                                                    <a className="btn" href="#">
+                                                        <i className="fa fa-shopping-cart"></i> Buy Now
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,4 +116,4 @@ function AllProducts() {
     );
 }
 
-export default AllProducts;
+export default Womens;
