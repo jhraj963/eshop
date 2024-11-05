@@ -22,7 +22,7 @@ function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await cusregister(inputs);
-        navigate('/login')
+        navigate('/Login')
     }
 
     return (
@@ -79,7 +79,7 @@ function Register() {
                     </div> */}
 
                 </div>
-                <Link to="/login">Have an account? Login</Link>
+                <Link to="/Login">Have an account? Login</Link>
                 <div className="clearfix">
                     <button type="submit" className="btn btn-primary float-right">Submit</button>
                 </div>
