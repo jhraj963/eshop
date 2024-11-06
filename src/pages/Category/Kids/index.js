@@ -91,6 +91,10 @@ function Kids() {
                                                         </button>
                                                     </div>
                                                 </div>
+                                                <div className="product-action text-center">
+                                                    <button type="button" className="btn btn-danger">Available Product: {d.quantity} Pcs
+                                                    </button>
+                                                </div>
                                                 <div className="product-price">
                                                     <h3>
                                                         <span>৳</span>

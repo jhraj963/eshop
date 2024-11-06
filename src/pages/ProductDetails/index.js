@@ -10,72 +10,60 @@ function ProductDetails() {
         <div className="product-detail">
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-lg-8">
+                    <div className="col-lg-12">
                         <div className="product-detail-top">
                             <div className="row align-items-center">
-                                <div className="col-md-5">
+                                <div className="col-md-6">
                                     <div className="product-slider-single normal-slider">
                                         <img src="assets/img/product-1.jpg" alt="Product Image"/>
-                                        {/* <img src="assets/img/product-3.jpg" alt="Product Image"/>
-                                        <img src="assets/img/product-5.jpg" alt="Product Image"/>
-                                        <img src="assets/img/product-7.jpg" alt="Product Image"/>
-                                        <img src="assets/img/product-9.jpg" alt="Product Image"/>
-                                        <img src="assets/img/product-10.jpg" alt="Product Image"/> */}
                                     </div>
-                                    <div className="product-slider-single-nav normal-slider">
-                                        <div className="slider-nav-img"><img src="assets/img/product-1.jpg" alt="Product Image"/></div>
-                                        {/* <div className="slider-nav-img"><img src="assets/img/product-3.jpg" alt="Product Image"/></div>
-                                        <div className="slider-nav-img"><img src="assets/img/product-5.jpg" alt="Product Image"/></div>
-                                        <div className="slider-nav-img"><img src="assets/img/product-7.jpg" alt="Product Image"/></div>
-                                        <div className="slider-nav-img"><img src="assets/img/product-9.jpg" alt="Product Image"/></div>
-                                        <div className="slider-nav-img"><img src="assets/img/product-10.jpg" alt="Product Image"/></div> */}
-                                    </div>
+                                            
                                 </div>
-                                <div className="col-md-7">
-                                    <div className="product-content">
-                                        <div className="title"><h2>Product Name</h2></div>
-                                        <div className="ratting">
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                        </div>
-                                        <div className="price">
-                                            <h4>Price:</h4>
-                                            <p>৳99 <span>৳149</span></p>
-                                        </div>
-                                        <div className="quantity">
-                                            <h4>Quantity:</h4>
-                                            <div className="qty">
-                                                <button className="btn-minus"><i className="fa fa-minus"></i></button>
-                                                <input type="text" value="1"/>
-                                                <button className="btn-plus"><i className="fa fa-plus"></i></button>
+                                        <div className="col-md-6">
+                                            <div className="product-content">
+                                                <div className="title"><h2>Product Name</h2></div>
+                                                <div className="ratting">
+                                                    <i className="fa fa-star"></i>
+                                                    <i className="fa fa-star"></i>
+                                                    <i className="fa fa-star"></i>
+                                                    <i className="fa fa-star"></i>
+                                                    <i className="fa fa-star"></i>
+                                                </div>
+                                                <div className="price">
+                                                    <h4>Price:</h4>
+                                                    <p>৳99 <span>৳149</span></p>
+                                                </div>
+                                                <div className="quantity">
+                                                    <h4>Quantity:</h4>
+                                                    <div className="qty">
+                                                        <button className="btn-minus"><i className="fa fa-minus"></i></button>
+                                                        <input type="text" value="1" />
+                                                        <button className="btn-plus"><i className="fa fa-plus"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div className="p-size">
+                                                    <h4>Size:</h4>
+                                                    <div className="btn-group btn-group-sm">
+                                                        <button type="button" className="btn">S</button>
+                                                        <button type="button" className="btn">M</button>
+                                                        <button type="button" className="btn">L</button>
+                                                        <button type="button" className="btn">XL</button>
+                                                    </div>
+                                                </div>
+                                                <div className="p-color">
+                                                    <h4>Color:</h4>
+                                                    <div className="btn-group btn-group-sm">
+                                                        <button type="button" className="btn">White</button>
+                                                        <button type="button" className="btn">Black</button>
+                                                        <button type="button" className="btn">Blue</button>
+                                                    </div>
+                                                </div>
+                                                <div className="action">
+                                                    <a className="btn" href="#"><i className="fa fa-shopping-cart"></i>Add to Cart</a>
+                                                    <a className="btn" href="#"><i className="fa fa-shopping-bag"></i>Buy Now</a>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="p-size">
-                                            <h4>Size:</h4>
-                                            <div className="btn-group btn-group-sm">
-                                                <button type="button" className="btn">S</button>
-                                                <button type="button" className="btn">M</button>
-                                                <button type="button" className="btn">L</button>
-                                                <button type="button" className="btn">XL</button>
-                                            </div> 
-                                        </div>
-                                        <div className="p-color">
-                                            <h4>Color:</h4>
-                                            <div className="btn-group btn-group-sm">
-                                                <button type="button" className="btn">White</button>
-                                                <button type="button" className="btn">Black</button>
-                                                <button type="button" className="btn">Blue</button>
-                                            </div> 
-                                        </div>
-                                        <div className="action">
-                                            <a className="btn" href="#"><i className="fa fa-shopping-cart"></i>Add to Cart</a>
-                                            <a className="btn" href="#"><i className="fa fa-shopping-bag"></i>Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         
@@ -303,143 +291,7 @@ function ProductDetails() {
                         </div>
                     </div>
                     
-                    {/* Side Bar Start */}
-                    <div className="col-lg-4 sidebar">
-                        <div className="sidebar-widget category">
-                            <h2 className="title">Category</h2>
-                            <nav className="navbar bg-light">
-                                <ul className="navbar-nav">
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="#"><i className="fa fa-female"></i>Fashion & Beauty</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="#"><i className="fa fa-child"></i>Kids & Babies Clothes</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="#"><i className="fa fa-tshirt"></i>Men & Women Clothes</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="#"><i className="fa fa-mobile-alt"></i>Gadgets & Accessories</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="#"><i className="fa fa-microchip"></i>Electronics & Accessories</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                        
-                        <div className="sidebar-widget widget-slider">
-                            <div className="sidebar-slider normal-slider">
-                                <div className="product-item">
-                                    <div className="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div className="ratting">
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div className="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="assets/img/product-7.jpg" alt="Product Image"/>
-                                        </a>
-                                        <div className="product-action">
-                                            <a href="#"><i className="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i className="fa fa-heart"></i></a>
-                                            <a href="#"><i className="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div className="product-price">
-                                        <h3><span>৳</span>99</h3>
-                                        <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                                <div className="product-item">
-                                    <div className="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div className="ratting">
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div className="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="assets/img/product-8.jpg" alt="Product Image"/>
-                                        </a>
-                                        <div className="product-action">
-                                            <a href="#"><i className="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i className="fa fa-heart"></i></a>
-                                            <a href="#"><i className="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div className="product-price">
-                                        <h3><span>৳</span>99</h3>
-                                        <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                                <div className="product-item">
-                                    <div className="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div className="ratting">
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                            <i className="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div className="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="assets/img/product-9.jpg" alt="Product Image"/>
-                                        </a>
-                                        <div className="product-action">
-                                            <a href="#"><i className="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i className="fa fa-heart"></i></a>
-                                            <a href="#"><i className="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div className="product-price">
-                                        <h3><span>৳</span>99</h3>
-                                        <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div className="sidebar-widget brands">
-                            <h2 className="title">Our Brands</h2>
-                            <ul>
-                                <li><a href="#">Nulla </a><span>(45)</span></li>
-                                <li><a href="#">Curabitur </a><span>(34)</span></li>
-                                <li><a href="#">Nunc </a><span>(67)</span></li>
-                                <li><a href="#">Ullamcorper</a><span>(74)</span></li>
-                                <li><a href="#">Fusce </a><span>(89)</span></li>
-                                <li><a href="#">Sagittis</a><span>(28)</span></li>
-                            </ul>
-                        </div>
-                        
-                        <div className="sidebar-widget tag">
-                            <h2 className="title">Tags Cloud</h2>
-                            <a href="#">Lorem ipsum</a>
-                            <a href="#">Vivamus</a>
-                            <a href="#">Phasellus</a>
-                            <a href="#">pulvinar</a>
-                            <a href="#">Curabitur</a>
-                            <a href="#">Fusce</a>
-                            <a href="#">Sem quis</a>
-                            <a href="#">Mollis metus</a>
-                            <a href="#">Sit amet</a>
-                            <a href="#">Vel posuere</a>
-                            <a href="#">orci luctus</a>
-                            <a href="#">Nam lorem</a>
-                        </div>
-                    </div>
-                    {/* Side Bar End */}
+                   
                 </div>
             </div>
         </div>

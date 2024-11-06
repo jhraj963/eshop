@@ -76,6 +76,10 @@ function AllProducts() {
                                                         </button>
                                                     </div>
                                                 </div>
+                                                <div className="product-action text-center">
+                                                    <button type="button" className="btn btn-danger">Available Product: {d.quantity} Pcs 
+                                                    </button>
+                                                </div>
                                                 <div className="product-price">
                                                     <h3><span>৳</span>{d.price || 99}</h3>
                                                     <a className="btn" href="#"><i className="fa fa-shopping-cart"></i> Buy Now</a>

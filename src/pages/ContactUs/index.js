@@ -62,9 +62,9 @@ function ContactUs() {
                     <div className="col-lg-4">
                         <div className="contact-info">
                             <h2>Our Office</h2>
-                            <h3><i className="fa fa-map-marker"></i>123 Office, Los Angeles, CA, USA</h3>
-                            <h3><i className="fa fa-envelope"></i>office@example.com</h3>
-                            <h3><i className="fa fa-phone"></i>+123-456-7890</h3>
+                                    <h3><i className="fa fa-map-marker"></i>Bordighir Phar, Chttaogram</h3>
+                                    <h3><i className="fa fa-envelope"></i>e-shopper@gmail.com</h3>
+                                    <h3><i className="fa fa-phone"></i>+88 01572 378254</h3>
                             <div className="social">
                                 <a href=""><i className="fab fa-twitter"></i></a>
                                 <a href=""><i className="fab fa-facebook-f"></i></a>
@@ -77,9 +77,9 @@ function ContactUs() {
                     <div className="col-lg-4">
                         <div className="contact-info">
                             <h2>Our Store</h2>
-                            <h3><i className="fa fa-map-marker"></i>123 Store, Los Angeles, CA, USA</h3>
-                            <h3><i className="fa fa-envelope"></i>store@example.com</h3>
-                            <h3><i className="fa fa-phone"></i>+123-456-7890</h3>
+                                    <h3><i className="fa fa-map-marker"></i>Bordighir Phar, Chttaogram</h3>
+                                    <h3><i className="fa fa-envelope"></i>e-shopper@gmail.com</h3>
+                                    <h3><i className="fa fa-phone"></i>+88 01572 378254</h3>
                             <div className="social">
                                 <a href=""><i className="fab fa-twitter"></i></a>
                                 <a href=""><i className="fab fa-facebook-f"></i></a>
@@ -113,7 +113,7 @@ function ContactUs() {
                     </div>
                     <div className="col-lg-12">
                         <div className="contact-map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.733248043701!2d-118.24532098539802!3d34.05071312525937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c648fa1d4803%3A0xdec27bf11f9fd336!2s123%20S%20Los%20Angeles%20St%2C%20Los%20Angeles%2C%20CA%2090012%2C%20USA!5e0!3m2!1sen!2sbd!4v1585634930544!5m2!1sen!2sbd" frameborder="0" style={{border:"0"}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d14751.727501199684!2d91.79806606957337!3d22.431589786260766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDI1JzUzLjciTiA5McKwNDgnNTkuNSJF!5e0!3m2!1sen!2sbd!4v1730868322331!5m2!1sen!2sbd" frameborder="0" style={{ border: "0" }} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                         </div>
                     </div>
                 </div>
