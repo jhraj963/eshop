@@ -244,7 +244,7 @@ function Home() {
                                     <div className="col-md-3" key={d.id}>
                                         <div className="product-item">
                                             <div className="product-title">
-                                                <a href="#">{d.productname}</a>
+                                                <Link to={`/product-detail/${d.id}`}>{d.productname}</Link>
                                                 <div className="ratting">
                                                     {[...Array(5)].map((_, index) => (
                                                         <i key={index} className="fa fa-star"></i>
@@ -269,7 +269,11 @@ function Home() {
                                                     <button type='button' className="btn btn-link"><i className="fa fa-heart"></i></button>
                                                     <button type='button' className="btn btn-link"><i className="fa fa-search"></i></button>
                                                     {/* <button onClick={() => deleteData(d.id)}><i className="fa fa-trash"></i></button> */}
-                                                </div>
+                                                </div>       
+                                            </div>
+                                            <div className="product-action text-center">
+                                                <button type="button" className="btn btn-danger">Available Product: {d.quantity} Pcs
+                                                </button>
                                             </div>
                                             <div className="product-price">
                                                 <h3><span>৳</span>{d.price || 99}</h3>
@@ -458,7 +462,7 @@ function Home() {
                                     <div className="col-md-3" key={d.id}>
                                         <div className="product-item">
                                             <div className="product-title">
-                                                <a href="#">{d.productname}</a>
+                                                <Link to={`/product-detail/${d.id}`}>{d.productname}</Link>
                                                 <div className="ratting">
                                                     {[...Array(5)].map((_, index) => (
                                                         <i key={index} className="fa fa-star"></i>
@@ -484,6 +488,10 @@ function Home() {
                                                     <button type='button' className="btn btn-link"><i className="fa fa-search"></i></button>
                                                     {/* <button onClick={() => deleteData(d.id)}><i className="fa fa-trash"></i></button> */}
                                                 </div>
+                                            </div>
+                                            <div className="product-action text-center">
+                                                <button type="button" className="btn btn-danger">Available Product: {d.quantity} Pcs
+                                                </button>
                                             </div>
                                             <div className="product-price">
                                                 <h3><span>৳</span>{d.price || 99}</h3>

@@ -1,314 +1,108 @@
-import React from 'react'
-import AdminLayout from '../../layouts/AdminLayout'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom'; // To get product ID from URL
+import axios from '../../components/axios';
+import AdminLayout from '../../layouts/AdminLayout';
+import { useCart } from "react-use-cart";
+import { Link } from 'react-router-dom';
 
 function ProductDetails() {
+    const { productId } = useParams(); // Get the product ID from the URL
+    const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [selectedSize, setSelectedSize] = useState('');
+
+    const { addItem } = useCart();
+
+    useEffect(() => {
+        fetchProductDetails();
+    }, [productId]);
+
+    const fetchProductDetails = async () => {
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/addproduct/${productId}`);
+            setProduct(response.data.data);
+        } catch (err) {
+            setError('Failed to fetch product details.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    if (loading) {
+        return <AdminLayout>Loading...</AdminLayout>;
+    }
+
+    if (error) {
+        return <AdminLayout>{error}</AdminLayout>;
+    }
+
+    const handleAddToCart = () => {
+        if (!selectedSize) {
+            alert('Please select size!');
+        } else {
+            addItem({ ...product, size: selectedSize});
+        }
+    };
+
     return (
         <AdminLayout>
-          <>
+            <div className="product-detail">
+                <div className="container-fluid">
+                    <div className="row">
+                        {product && (
+                            <>
+                                {/* Product Images Section */}
+                                <div className="col-lg-6">
+                                    <div className="product-images">
+                                        {product.photo.split(',').map((src, i) => (
+                                            <img
+                                                key={i}
+                                                src={`${process.env.REACT_APP_BACKEND_URL}/addproduct/${src}`}
+                                                alt={product.productname}
+                                                width="100%"
+                                                style={{ marginBottom: '10px' }}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
 
-             {/* Product Detail Start */}
-        <div className="product-detail">
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <div className="product-detail-top">
-                            <div className="row align-items-center">
-                                <div className="col-md-6">
-                                    <div className="product-slider-single normal-slider">
-                                        <img src="assets/img/product-1.jpg" alt="Product Image"/>
-                                    </div>
-                                            
-                                </div>
-                                        <div className="col-md-6">
-                                            <div className="product-content">
-                                                <div className="title"><h2>Product Name</h2></div>
-                                                <div className="ratting">
-                                                    <i className="fa fa-star"></i>
-                                                    <i className="fa fa-star"></i>
-                                                    <i className="fa fa-star"></i>
-                                                    <i className="fa fa-star"></i>
-                                                    <i className="fa fa-star"></i>
-                                                </div>
-                                                <div className="price">
-                                                    <h4>Price:</h4>
-                                                    <p>৳99 <span>৳149</span></p>
-                                                </div>
-                                                <div className="quantity">
-                                                    <h4>Quantity:</h4>
-                                                    <div className="qty">
-                                                        <button className="btn-minus"><i className="fa fa-minus"></i></button>
-                                                        <input type="text" value="1" />
-                                                        <button className="btn-plus"><i className="fa fa-plus"></i></button>
-                                                    </div>
-                                                </div>
-                                                <div className="p-size">
-                                                    <h4>Size:</h4>
-                                                    <div className="btn-group btn-group-sm">
-                                                        <button type="button" className="btn">S</button>
-                                                        <button type="button" className="btn">M</button>
-                                                        <button type="button" className="btn">L</button>
-                                                        <button type="button" className="btn">XL</button>
-                                                    </div>
-                                                </div>
-                                                <div className="p-color">
-                                                    <h4>Color:</h4>
-                                                    <div className="btn-group btn-group-sm">
-                                                        <button type="button" className="btn">White</button>
-                                                        <button type="button" className="btn">Black</button>
-                                                        <button type="button" className="btn">Blue</button>
-                                                    </div>
-                                                </div>
-                                                <div className="action">
-                                                    <a className="btn" href="#"><i className="fa fa-shopping-cart"></i>Add to Cart</a>
-                                                    <a className="btn" href="#"><i className="fa fa-shopping-bag"></i>Buy Now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                            </div>
-                        </div>
-                        
-                        <div className="row product-detail-bottom">
-                            <div className="col-lg-12">
-                                <ul className="nav nav-pills nav-justified">
-                                    <li className="nav-item">
-                                        <a className="nav-link active" data-toggle="pill" href="#description">Description</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" data-toggle="pill" href="#specification">Specification</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" data-toggle="pill" href="#reviews">Reviews (1)</a>
-                                    </li>
-                                </ul>
+                                {/* Product Details Section */}
+                                <div className="col-lg-6">
+                                    <h2>{product.productname}</h2>
+                                    <p>{product.description}</p>
+                                    <p><b>Price:</b> ৳{product.price || 99}</p>
+                                    <p><b>Available:</b> {product.quantity} pcs</p>
 
-                                <div className="tab-content">
-                                    <div id="description" className="container tab-pane active">
-                                        <h4>Product description</h4>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum quam ac mi viverra dictum. In efficitur ipsum diam, at dignissim lorem tempor in. Vivamus tempor hendrerit finibus. Nulla tristique viverra nisl, sit amet bibendum ante suscipit non. Praesent in faucibus tellus, sed gravida lacus. Vivamus eu diam eros. Aliquam et sapien eget arcu rhoncus scelerisque. Suspendisse sit amet neque neque. Praesent suscipit et magna eu iaculis. Donec arcu libero, commodo ac est a, malesuada finibus dolor. Aenean in ex eu velit semper fermentum. In leo dui, aliquet sit amet eleifend sit amet, varius in turpis. Maecenas fermentum ut ligula at consectetur. Nullam et tortor leo. 
-                                        </p>
-                                    </div>
-                                    <div id="specification" className="container tab-pane fade">
-                                        <h4>Product specification</h4>
-                                        <ul>
-                                            <li>Lorem ipsum dolor sit amet</li>
-                                            <li>Lorem ipsum dolor sit amet</li>
-                                            <li>Lorem ipsum dolor sit amet</li>
-                                            <li>Lorem ipsum dolor sit amet</li>
-                                            <li>Lorem ipsum dolor sit amet</li>
-                                        </ul>
-                                    </div>
-                                    <div id="reviews" className="container tab-pane fade">
-                                        <div className="reviews-submitted">
-                                            <div className="reviewer">Phasellus Gravida - <span>01 Jan 2020</span></div>
-                                            <div className="ratting">
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                            </div>
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-                                            </p>
-                                        </div>
-                                        <div className="reviews-submit">
-                                            <h4>Give your Review:</h4>
-                                            <div className="ratting">
-                                                <i className="far fa-star"></i>
-                                                <i className="far fa-star"></i>
-                                                <i className="far fa-star"></i>
-                                                <i className="far fa-star"></i>
-                                                <i className="far fa-star"></i>
-                                            </div>
-                                            <div className="row form">
-                                                <div className="col-sm-6">
-                                                    <input type="text" placeholder="Name"/>
-                                                </div>
-                                                <div className="col-sm-6">
-                                                    <input type="email" placeholder="Email"/>
-                                                </div>
-                                                <div className="col-sm-12">
-                                                    <textarea placeholder="Review"></textarea>
-                                                </div>
-                                                <div className="col-sm-12">
-                                                    <button>Submit</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div className="product">
-                            <div className="section-header">
-                                <h1>Related Products</h1>
-                            </div>
+                                    {/* Static Size Selection */}
+                                    <div className="size-selection">
+                                        <p><b>Size:</b></p>
+                                        <select
+                                            value={selectedSize}
+                                            onChange={(e) => setSelectedSize(e.target.value)}
+                                            className="form-select"
+                                        >
+                                            <option value="">Select Size</option>
+                                            {/* Static Sizes */}
+                                            <option value="S">S</option>
+                                            <option value="M">M</option>
+                                            <option value="L">L</option>
+                                            <option value="XL">XL</option>
+                                        </select>
+                                    </div> <br/>
 
-                            <div className="row align-items-center product-slider product-slider-3">
-                                <div className="col-lg-3">
-                                    <div className="product-item">
-                                        <div className="product-title">
-                                            <a href="#">Product Name</a>
-                                            <div className="ratting">
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div className="product-image">
-                                            <a href="product-detail.html">
-                                                <img src="assets/img/product-10.jpg" alt="Product Image"/>
-                                            </a>
-                                            <div className="product-action">
-                                                <a href="#"><i className="fa fa-cart-plus"></i></a>
-                                                <a href="#"><i className="fa fa-heart"></i></a>
-                                                <a href="#"><i className="fa fa-search"></i></a>
-                                            </div>
-                                        </div>
-                                        <div className="product-price">
-                                            <h3><span>৳</span>99</h3>
-                                            <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
-                                        </div>
-                                    </div>
+                                    {/* Add to Cart Button */}
+                                    <button className="btn btn-primary" onClick={handleAddToCart}>
+                                        Add to Cart
+                                    </button>
                                 </div>
-                                <div className="col-lg-3">
-                                    <div className="product-item">
-                                        <div className="product-title">
-                                            <a href="#">Product Name</a>
-                                            <div className="ratting">
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div className="product-image">
-                                            <a href="product-detail.html">
-                                                <img src="assets/img/product-8.jpg" alt="Product Image"/>
-                                            </a>
-                                            <div className="product-action">
-                                                <a href="#"><i className="fa fa-cart-plus"></i></a>
-                                                <a href="#"><i className="fa fa-heart"></i></a>
-                                                <a href="#"><i className="fa fa-search"></i></a>
-                                            </div>
-                                        </div>
-                                        <div className="product-price">
-                                            <h3><span>৳</span>99</h3>
-                                            <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="product-item">
-                                        <div className="product-title">
-                                            <a href="#">Product Name</a>
-                                            <div className="ratting">
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div className="product-image">
-                                            <a href="product-detail.html">
-                                                <img src="assets/img/product-6.jpg" alt="Product Image"/>
-                                            </a>
-                                            <div className="product-action">
-                                                <a href="#"><i className="fa fa-cart-plus"></i></a>
-                                                <a href="#"><i className="fa fa-heart"></i></a>
-                                                <a href="#"><i className="fa fa-search"></i></a>
-                                            </div>
-                                        </div>
-                                        <div className="product-price">
-                                            <h3><span>৳</span>99</h3>
-                                            <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="product-item">
-                                        <div className="product-title">
-                                            <a href="#">Product Name</a>
-                                            <div className="ratting">
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div className="product-image">
-                                            <a href="product-detail.html">
-                                                <img src="assets/img/product-4.jpg" alt="Product Image"/>
-                                            </a>
-                                            <div className="product-action">
-                                                <a href="#"><i className="fa fa-cart-plus"></i></a>
-                                                <a href="#"><i className="fa fa-heart"></i></a>
-                                                <a href="#"><i className="fa fa-search"></i></a>
-                                            </div>
-                                        </div>
-                                        <div className="product-price">
-                                            <h3><span>৳</span>99</h3>
-                                            <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="product-item">
-                                        <div className="product-title">
-                                            <a href="#">Product Name</a>
-                                            <div className="ratting">
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                                <i className="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div className="product-image">
-                                            <a href="product-detail.html">
-                                                <img src="assets/img/product-2.jpg" alt="Product Image"/>
-                                            </a>
-                                            <div className="product-action">
-                                                <a href="#"><i className="fa fa-cart-plus"></i></a>
-                                                <a href="#"><i className="fa fa-heart"></i></a>
-                                                <a href="#"><i className="fa fa-search"></i></a>
-                                            </div>
-                                        </div>
-                                        <div className="product-price">
-                                            <h3><span>৳</span>99</h3>
-                                            <a className="btn" href=""><i className="fa fa-shopping-cart"></i>Buy Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            </>
+                        )}
                     </div>
-                    
-                   
                 </div>
             </div>
-        </div>
-        {/* Product Detail End */}
-       
-          
-          
-          </>  
-        
-
-            
-
-            
-
-            
         </AdminLayout>
-    )
+    );
 }
 
-export default ProductDetails
+export default ProductDetails;

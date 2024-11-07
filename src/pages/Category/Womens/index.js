@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../../components/axios';
 import AdminLayout from '../../../layouts/AdminLayout';
 import { useCart } from "react-use-cart";
+import { Link } from 'react-router-dom';
 
 function Womens() {
     const [data, setData] = useState([]);
@@ -55,7 +56,7 @@ function Womens() {
                                         <div className="col-md-3" key={d.id}>
                                             <div className="product-item">
                                                 <div className="product-title">
-                                                    <a href="#">{d.productname}</a>
+                                                    <Link to={`/product-detail/${d.id}`}>{d.productname}</Link>
                                                     <div className="ratting">
                                                         {[...Array(5)].map((_, index) => (
                                                             <i key={index} className="fa fa-star"></i>
