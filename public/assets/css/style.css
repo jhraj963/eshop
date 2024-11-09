@@ -2399,3 +2399,18 @@ h2 {
         text-align: center;
     }
 }
+
+
+.slider-track {
+    background: #ddd;
+    height: 10px;
+    border-radius: 5px;
+}
+
+.slider-thumb {
+    background: #3b8bff;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 2px #999;
+}
