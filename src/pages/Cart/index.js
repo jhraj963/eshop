@@ -1,39 +1,53 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import AdminLayout from '../../layouts/AdminLayout';
 import { Link } from 'react-router-dom';
 import { useCart } from 'react-use-cart';
+import axios from '../../components/axios';
 
 function Cart() {
-    // State for cart items
+    // State for cart items, discount, and coupon code
     const { items, removeItem, updateItemQuantity, cartTotal } = useCart();
-    const [cartItems, setCartItems] = useState([]);
+    const [couponCode, setCouponCode] = useState('');
+    const [discount, setDiscount] = useState(0);
+    const [availableDiscounts, setAvailableDiscounts] = useState([]);
 
+    useEffect(() => {
+        // Fetch available discounts when component loads
+        fetchDiscounts();
+    }, []);
 
-
-    // Add product to cart
-    const addToCart = (product) => {
-        const existingProduct = cartItems.find(item => item.id === product.id);
-        if (existingProduct) {
-            setCartItems(
-                cartItems.map(item =>
-                    item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-                )
-            );
-        } else {
-            setCartItems([...cartItems, { ...product, quantity: 1 }]);
+    const fetchDiscounts = async () => {
+        try {
+            // Fetch discounts from backend API
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/discount/`);
+            setAvailableDiscounts(response.data.data);
+        } catch (error) {
+            console.error("Error fetching discounts", error);
         }
     };
 
+    const applyDiscount = () => {
+    const discountData = availableDiscounts.find(d => d.coupon === couponCode);
+    if (discountData) {
+        setDiscount(discountData.discount);
+        // Store discount and coupon code in localStorage
+        localStorage.setItem('discountPercentage', discountData.discount);
+        localStorage.setItem('couponCode', couponCode);
+        alert("Discount applied successfully!");
+    } else {
+        alert("Invalid coupon code.");
+    }
+};
+
+
+    // Calculate discounted total
+    const discountedTotal = cartTotal - (cartTotal * discount / 100);
+    const finalTotal = discountedTotal + 50; // Adding shipping cost
 
     // Update quantity of a product
     const updateQuantity = (item, qty) => {
         let itemqty = item.quantity + qty;
         updateItemQuantity(item.id, itemqty);
-    };
-
-    // Calculate total price
-    const getTotalPrice = () => {
-        return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
     };
 
     return (
@@ -89,11 +103,24 @@ function Cart() {
                                                 <div className="cart-content">
                                                     <h1>Cart Summary</h1>
                                                     <p>Sub Total<span>৳{cartTotal}</span></p>
+                                                    {/* Display Discount if applied */}
+                                                    <p>Discount<span>{discount}%</span></p>
                                                     <p>Shipping Cost<span>৳50</span></p>
-                                                    <h2>Grand Total<span>৳{cartTotal + 50}</span></h2>
+                                                    <h2>Grand Total<span>৳{finalTotal}</span></h2>
                                                 </div>
-                                                <div className="cart-btn">
 
+                                                {/* Coupon Code Input Section */}
+                                                <div className="cart-discount">
+                                                    <input
+                                                        type="text"
+                                                        value={couponCode}
+                                                        onChange={(e) => setCouponCode(e.target.value)}
+                                                        placeholder="Enter coupon code"
+                                                    />
+                                                    <button className="btn btn-primary" onClick={applyDiscount}>Apply Coupon</button>
+                                                </div><br/>
+
+                                                <div className="cart-btn">
                                                     <Link to="/Checkout" className='btn btn-primary'>
                                                         Checkout
                                                     </Link>
