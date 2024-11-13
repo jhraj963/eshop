@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import AdminLayout from '../../layouts/AdminLayout';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import { useCart } from 'react-use-cart';
 import axios from '../../components/axios';
 
 function Cart() {
-    // State for cart items, discount, and coupon code
     const { items, removeItem, updateItemQuantity, cartTotal } = useCart();
     const [couponCode, setCouponCode] = useState('');
     const [discount, setDiscount] = useState(0);
     const [availableDiscounts, setAvailableDiscounts] = useState([]);
+    const navigate = useNavigate(); // Hook for navigation
 
     useEffect(() => {
         // Fetch available discounts when component loads
@@ -27,18 +27,17 @@ function Cart() {
     };
 
     const applyDiscount = () => {
-    const discountData = availableDiscounts.find(d => d.coupon === couponCode);
-    if (discountData) {
-        setDiscount(discountData.discount);
-        // Store discount and coupon code in localStorage
-        localStorage.setItem('discountPercentage', discountData.discount);
-        localStorage.setItem('couponCode', couponCode);
-        alert("Discount applied successfully!");
-    } else {
-        alert("Invalid coupon code.");
-    }
-};
-
+        const discountData = availableDiscounts.find(d => d.coupon === couponCode);
+        if (discountData) {
+            setDiscount(discountData.discount);
+            // Store discount and coupon code in localStorage
+            localStorage.setItem('discountPercentage', discountData.discount);
+            localStorage.setItem('couponCode', couponCode);
+            alert("Discount applied successfully!");
+        } else {
+            alert("Invalid coupon code.");
+        }
+    };
 
     // Calculate discounted total
     const discountedTotal = cartTotal - (cartTotal * discount / 100);
@@ -48,6 +47,18 @@ function Cart() {
     const updateQuantity = (item, qty) => {
         let itemqty = item.quantity + qty;
         updateItemQuantity(item.id, itemqty);
+    };
+
+    // Check if user is logged in
+    const isLoggedIn = !!localStorage.getItem('front_access_token'); // Example of checking for an auth token
+
+    // Redirect to login page if not logged in when clicking checkout
+    const handleCheckoutClick = () => {
+        if (!isLoggedIn) {
+            navigate('/login'); // Redirect to login page
+        } else {
+            navigate('/checkout'); // Redirect to checkout page if logged in
+        }
     };
 
     return (
@@ -118,12 +129,12 @@ function Cart() {
                                                         placeholder="Enter coupon code"
                                                     />
                                                     <button className="btn btn-primary" onClick={applyDiscount}>Apply Coupon</button>
-                                                </div><br/>
+                                                </div><br />
 
                                                 <div className="cart-btn">
-                                                    <Link to="/Checkout" className='btn btn-primary'>
+                                                    <button className='btn btn-primary' onClick={handleCheckoutClick}>
                                                         Checkout
-                                                    </Link>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>

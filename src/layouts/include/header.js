@@ -69,9 +69,6 @@ function Header() {
                                     <li onClick={activeMenu} className={`nav-item ${isLinkActive("/")}`}>
                                         <Link to="/" className="nav-link">Home</Link>
                                     </li>
-                                    {/* <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Products")}`}>
-                                        <Link to="/Products" className="nav-link">Products</Link>
-                                    </li> */}
                                     <li onClick={activeMenu} className={`nav-item ${isLinkActive("/AllProducts")}`}>
                                         <Link to="/AllProducts" className="nav-link">All Products</Link>
                                     </li>
@@ -89,12 +86,6 @@ function Header() {
                                             </li>
                                         </div>
                                     </div>
-                                    {/* <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Cart")}`}>
-                                        <Link to="/Cart" className="nav-link">Cart</Link>
-                                    </li>
-                                    <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Checkout")}`}>
-                                        <Link to="/Checkout" className="nav-link">Checkout</Link>
-                                    </li> */}
                                     <li onClick={activeMenu} className={`nav-item ${isLinkActive("/MyAccount")}`}>
                                         <Link to="/MyAccount" className="nav-link">My Account</Link>
                                     </li>
@@ -104,9 +95,6 @@ function Header() {
                                             <li className={`nav-item ${isLinkActive("/Wishlist")}`}>
                                                 <Link to="/Wishlist" className="dropdown-item">Wishlist ({totalItems})</Link>
                                             </li>
-                                            {/* <li className={`nav-item ${isLinkActive("/ContactUs")}`}>
-                                                <Link to="/ContactUs" className="dropdown-item">Contact Us</Link>
-                                            </li> */}
                                         </div>
                                     </div>
                                     <li onClick={activeMenu} className={`nav-item ${isLinkActive("/ContactUs")}`}>
@@ -161,7 +149,7 @@ function Header() {
                             <div className="user">
                                 <Link to="/Wishlist" className="btn cart">
                                     <i className="fa fa-heart"></i>
-                                    <span>({totalItems})</span>
+                                    <span>({wishlist})</span>
                                 </Link>
 
                                 <Link to="/Cart" className="btn cart">

@@ -11,8 +11,8 @@ const cuslogin = async (data) => {
         });
 
         if (response.data.data.token) {
-            localStorage.setItem("access_token", response.data.data.token);
-            localStorage.setItem("userdata", response.data.data.data);
+            localStorage.setItem("front_access_token", response.data.data.token);
+            localStorage.setItem("front_userdata", response.data.data.data);
             return true;
         } else {
             return false;
@@ -45,8 +45,8 @@ const cusregister = async (data) => {
     }
 }
 const logout = () => {
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("userdata");
+    localStorage.removeItem("front_access_token");
+    localStorage.removeItem("front_userdata");
 }
 
 export { cuslogin, cusregister, logout }
