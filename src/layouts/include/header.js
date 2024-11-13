@@ -6,6 +6,17 @@ import { useCart } from 'react-use-cart';
 function Header() {
     const { totalItems } = useCart();
     const [wishlist, setWishlist] = React.useState([]); // For wishlist items
+    let userdata = localStorage.getItem("front_userdata");
+
+    // Check if 'userdata' is a string before parsing, otherwise use it as is
+    let parsedUserData = null;
+    try {
+        parsedUserData = userdata ? JSON.parse(userdata) : null;
+    } catch (e) {
+        // If it's already an object (or the string is malformed), handle the error gracefully
+        console.error("Error parsing userdata:", e);
+        parsedUserData = userdata;
+    }
 
     const activeMenu = (e) => {
         document.querySelectorAll('.submenu').forEach((elem) => elem.classList.remove('active'));
@@ -35,7 +46,7 @@ function Header() {
 
     const handleLogout = async () => {
         await logout();
-        // Redirect or show a logout confirmation if needed
+        window.location.href = "/"; // Optionally, redirect to homepage after logout
     };
 
     return (
@@ -105,21 +116,29 @@ function Header() {
                                     <div className="nav-item dropdown">
                                         <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
                                         <div className="dropdown-menu">
-                                            <li className={`nav-item ${isLinkActive("/Login")}`}>
-                                                <Link to="/Login" className="dropdown-item">Login</Link>
-                                            </li>
-                                            <li className={`nav-item ${isLinkActive("/Register")}`}>
-                                                <Link to="/Register" className="dropdown-item">Register</Link>
-                                            </li>
-                                            <li className={`nav-item ${isLinkActive("/")}`}>
-                                                <Link to="/" className="dropdown-item">My Profile</Link>
-                                            </li>
-                                            <li className={`nav-item ${isLinkActive("/")}`}>
-                                                <Link to="/" className="dropdown-item">My Order</Link>
-                                            </li>
-                                            <li className={`nav-item`}>
-                                                <button onClick={handleLogout} className="dropdown-item">Logout</button>
-                                            </li>
+                                            {parsedUserData ? (
+                                                <>
+                                                    <span className='dropdown-item'>Hi, {parsedUserData.full_name}</span>
+                                                    <li className={`nav-item ${isLinkActive("/MyProfile")}`}>
+                                                        <Link to="/MyProfile" className="dropdown-item">My Profile</Link>
+                                                    </li>
+                                                    <li className={`nav-item ${isLinkActive("/MyOrders")}`}>
+                                                        <Link to="/MyOrders" className="dropdown-item">My Orders</Link>
+                                                    </li>
+                                                    <li className={`nav-item`}>
+                                                        <button onClick={handleLogout} className="dropdown-item">Logout</button>
+                                                    </li>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <li className={`nav-item ${isLinkActive("/Login")}`}>
+                                                        <Link to="/Login" className="dropdown-item">Login</Link>
+                                                    </li>
+                                                    <li className={`nav-item ${isLinkActive("/Register")}`}>
+                                                        <Link to="/Register" className="dropdown-item">Register</Link>
+                                                    </li>
+                                                </>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -134,9 +153,9 @@ function Header() {
                     <div className="row align-items-center">
                         <div className="col-md-3">
                             <div className="logo">
-                                <Link to="/" className=""><a >
+                                <Link to="/" className="">
                                     <img src="assets/img/logo.png" alt="Logo" width="90%" />
-                                </a></Link>
+                                </Link>
                             </div>
                         </div>
                         <div className="col-md-6">
@@ -149,7 +168,7 @@ function Header() {
                             <div className="user">
                                 <Link to="/Wishlist" className="btn cart">
                                     <i className="fa fa-heart"></i>
-                                    <span>({wishlist})</span>
+                                    <span>({totalItems})</span>
                                 </Link>
 
                                 <Link to="/Cart" className="btn cart">
