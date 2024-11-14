@@ -12,7 +12,7 @@ const cuslogin = async (data) => {
 
         if (response.data.data.token) {
             localStorage.setItem("front_access_token", response.data.data.token);
-            localStorage.setItem("front_userdata", response.data.data.data);
+            localStorage.setItem("front_userdata", JSON.stringify(response.data.data.data));
             return true;
         } else {
             return false;

@@ -114,7 +114,9 @@ function Header() {
                                 </div>
                                 <div className="navbar-nav ml-auto">
                                     <div className="nav-item dropdown">
-                                        <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
+                                        <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">
+                                            {parsedUserData ? `Hi, ${parsedUserData.full_name}` : 'Login & Register'}
+                                        </a>
                                         <div className="dropdown-menu">
                                             {parsedUserData ? (
                                                 <>
@@ -142,6 +144,7 @@ function Header() {
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </nav>
                     </div>
