@@ -120,7 +120,7 @@ function Header() {
                                         <div className="dropdown-menu">
                                             {parsedUserData ? (
                                                 <>
-                                                    <span className='dropdown-item'>Hi, {parsedUserData.full_name}</span>
+                                                    {/* <span className='dropdown-item'>Hi, {parsedUserData.full_name}</span> */}
                                                     <li className={`nav-item ${isLinkActive("/MyProfile")}`}>
                                                         <Link to="/MyProfile" className="dropdown-item">My Profile</Link>
                                                     </li>
