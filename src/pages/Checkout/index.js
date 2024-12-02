@@ -5,8 +5,10 @@ import { useCart } from 'react-use-cart';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function Checkout() {
+    const customer_id = JSON.parse(localStorage.getItem('front_userdata'));
     const { items, cartTotal } = useCart();
     const [inputs, setInputs] = useState({
+        customer_id: customer_id?.id,
         customer_name: '',
         email: '',
         mobile_no: '',
@@ -26,6 +28,7 @@ function Checkout() {
     const { id } = useParams();
 
     useEffect(() => {
+
         // Retrieve discount from localStorage
         const storedDiscount = localStorage.getItem('discountPercentage');
         setDiscount(storedDiscount ? parseFloat(storedDiscount) : 0);
